@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace sysestoque_CyberKnight.Models
 {
-    internal class UnidadeMedida{
+    public class UnidadeMedida{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

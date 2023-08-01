@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sysestoque_CyberKnight.Models
 {
-        internal class Produto {
+    public class Produto {
         [Key]
         public int id { get; set; }
         public string nome { get; set; }
@@ -23,21 +23,21 @@ namespace sysestoque_CyberKnight.Models
 
         [ForeignKey(nameof(Categoria))]
         public int CategoriaId { get; set; } 
-        public Categoria Categoria { get; set; }
+        public Categoria? Categoria { get; set; }
 
 
         [ForeignKey(nameof(UnidadeMedida))]
         public int UnidadeMedidaId { get; set; }
-        public Categoria UnidadeMedida { get; set; }
+        public UnidadeMedida? UnidadeMedida { get; set; }
 
 
         public ICollection<NotaEntrada>? NotasEntrada { get; set; } = new List<NotaEntrada>();
 
-        public ICollection<NotaEntrada>? ItemNotaEntrada { get; set; } = new List<NotaEntrada>();
+        public ICollection<ItemEntrada>? ItensEntrada { get; set; } = new List<ItemEntrada>();
 
         public ICollection<NotaSaida>? NotasSaida { get; set; } = new List<NotaSaida>();
 
-        public ICollection<NotaSaida>? ItemNotaSaida { get; set; } = new List<NotaSaida>();
+        public ICollection<ItemSaida>? ItensSaida { get; set; } = new List<ItemSaida>();
 
         public ICollection<Fornecedor>? Fornecedores { get; set; } = new List<Fornecedor>();
 
