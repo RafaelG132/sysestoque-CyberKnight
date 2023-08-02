@@ -11,7 +11,8 @@ using sysestoque_CyberKnight.Models.Config;
 namespace sysestoque_CyberKnight.Models{
     [EntityTypeConfiguration(typeof(NotaEntradaConfig))]
     public class NotaEntrada{
-        [Key]                                                                                                                                                                                                                                         
+        [Key]     
+            public int Id { get; set; }
             public DateTime DataEntrada { get; set; }
 
             public float ValorTotal { get; set; }
