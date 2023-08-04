@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             btnLogin = new Button();
             txtSenha = new Label();
             txbSenha = new TextBox();
@@ -85,7 +86,7 @@
             // 
             btnVerSenha.Location = new Point(719, 227);
             btnVerSenha.Name = "btnVerSenha";
-            btnVerSenha.Size = new Size(33, 23);
+            btnVerSenha.Size = new Size(32, 23);
             btnVerSenha.TabIndex = 3;
             btnVerSenha.Text = "👁‍🗨";
             btnVerSenha.UseVisualStyleBackColor = true;
@@ -102,6 +103,7 @@
             Controls.Add(txtLogin);
             Controls.Add(txtSenha);
             Controls.Add(btnLogin);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormLogin";
             Text = "Tela de Login";
             ResumeLayout(false);

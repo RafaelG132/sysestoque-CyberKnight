@@ -57,7 +57,8 @@ namespace sysestoque_CyberKnight
 
         }
 
-        private void btnVerSenha_Click(object sender, EventArgs e){
+        private void btnVerSenha_Click(object sender, EventArgs e)
+        {
             txbSenha.UseSystemPasswordChar = !txbSenha.UseSystemPasswordChar;
 
         }
