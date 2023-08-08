@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace sysestoque_CyberKnight.Models
 {
-    internal class Fornecedor{
+    public class Fornecedor{
         [Key]
         public string? Nome { get; set; }
         public string? Cnpj { get; set; }
