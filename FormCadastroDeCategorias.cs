@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sysestoque_CyberKnight.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,20 @@ namespace sysestoque_CyberKnight
 {
     public partial class FormCadastroDeCategorias : Form
     {
+        ICollection<Categoria> categorias = new List<Categoria>();
+        BindingSource bindingSourceCategorias = new BindingSource();
         public FormCadastroDeCategorias()
         {
             InitializeComponent();
+
+            using (var db = new EstoqueContext())
+            {
+                categorias = db.Categorias.ToList();
+
+                bindingSourceCategorias.DataSource = categorias;
+
+                dgvCategoria.DataSource = bindingSourceCategorias;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

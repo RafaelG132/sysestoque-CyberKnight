@@ -1,0 +1,301 @@
+﻿namespace sysestoque_CyberKnight
+{
+    partial class FormFornecedor
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFornecedor));
+            btnAtualizar = new Button();
+            btnSalvar = new Button();
+            btnExcluir = new Button();
+            textBox3 = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            dgvFornecedor = new DataGridView();
+            textBox4 = new TextBox();
+            btnIncluir = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            label2 = new Label();
+            label5 = new Label();
+            textBox5 = new TextBox();
+            label6 = new Label();
+            textBox6 = new TextBox();
+            label7 = new Label();
+            textBox7 = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvFornecedor).BeginInit();
+            SuspendLayout();
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.BackColor = Color.Transparent;
+            btnAtualizar.ForeColor = SystemColors.ControlText;
+            btnAtualizar.Location = new Point(489, 416);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 23);
+            btnAtualizar.TabIndex = 23;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizar.UseWaitCursor = true;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.BackColor = Color.Transparent;
+            btnSalvar.BackgroundImageLayout = ImageLayout.None;
+            btnSalvar.Cursor = Cursors.Hand;
+            btnSalvar.ForeColor = SystemColors.ControlText;
+            btnSalvar.Location = new Point(732, 415);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 23);
+            btnSalvar.TabIndex = 22;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = false;
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.BackColor = Color.Transparent;
+            btnExcluir.ForeColor = SystemColors.ControlText;
+            btnExcluir.Location = new Point(651, 415);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.TabIndex = 21;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = false;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(330, 40);
+            textBox3.MaxLength = 100;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(189, 23);
+            textBox3.TabIndex = 16;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.ForeColor = SystemColors.Control;
+            label3.Location = new Point(270, 43);
+            label3.Name = "label3";
+            label3.Size = new Size(54, 15);
+            label3.TabIndex = 15;
+            label3.Text = "Telefone:";
+            label3.Click += label3_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.ForeColor = SystemColors.Control;
+            label4.Location = new Point(12, 88);
+            label4.Name = "label4";
+            label4.Size = new Size(43, 15);
+            label4.TabIndex = 17;
+            label4.Text = "Nome:";
+            // 
+            // dgvFornecedor
+            // 
+            dgvFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFornecedor.Location = new Point(21, 222);
+            dgvFornecedor.Name = "dgvFornecedor";
+            dgvFornecedor.RowTemplate.Height = 25;
+            dgvFornecedor.Size = new Size(769, 166);
+            dgvFornecedor.TabIndex = 19;
+            dgvFornecedor.CellContentClick += dgvFornecedor_CellContentClick;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(61, 85);
+            textBox4.MaxLength = 100;
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(327, 23);
+            textBox4.TabIndex = 18;
+            // 
+            // btnIncluir
+            // 
+            btnIncluir.BackColor = Color.Transparent;
+            btnIncluir.ForeColor = SystemColors.ControlText;
+            btnIncluir.Location = new Point(570, 415);
+            btnIncluir.Name = "btnIncluir";
+            btnIncluir.Size = new Size(75, 23);
+            btnIncluir.TabIndex = 20;
+            btnIncluir.Text = "Incluir";
+            btnIncluir.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(0, 134);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 15);
+            label1.TabIndex = 24;
+            label1.Text = "Endereço:";
+            label1.Click += label1_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(61, 131);
+            textBox1.MaxLength = 100;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(327, 23);
+            textBox1.TabIndex = 25;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(61, 40);
+            textBox2.MaxLength = 100;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(189, 23);
+            textBox2.TabIndex = 27;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(18, 43);
+            label2.Name = "label2";
+            label2.Size = new Size(37, 15);
+            label2.TabIndex = 26;
+            label2.Text = "CNPJ:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.ForeColor = SystemColors.Control;
+            label5.Location = new Point(0, 177);
+            label5.Name = "label5";
+            label5.Size = new Size(44, 15);
+            label5.TabIndex = 28;
+            label5.Text = "E-mail:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(61, 174);
+            textBox5.MaxLength = 100;
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(327, 23);
+            textBox5.TabIndex = 29;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.ForeColor = SystemColors.Control;
+            label6.Location = new Point(395, 180);
+            label6.Name = "label6";
+            label6.Size = new Size(75, 15);
+            label6.TabIndex = 32;
+            label6.Text = "Responsável:";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(476, 177);
+            textBox6.MaxLength = 100;
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(323, 23);
+            textBox6.TabIndex = 33;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.ForeColor = SystemColors.Control;
+            label7.Location = new Point(395, 137);
+            label7.Name = "label7";
+            label7.Size = new Size(75, 15);
+            label7.TabIndex = 30;
+            label7.Text = "Razão Social:";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(476, 134);
+            textBox7.MaxLength = 100;
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(323, 23);
+            textBox7.TabIndex = 31;
+            // 
+            // FormFornecedor
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(817, 450);
+            Controls.Add(label6);
+            Controls.Add(textBox6);
+            Controls.Add(label7);
+            Controls.Add(textBox7);
+            Controls.Add(label5);
+            Controls.Add(textBox5);
+            Controls.Add(textBox2);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(textBox1);
+            Controls.Add(btnAtualizar);
+            Controls.Add(btnSalvar);
+            Controls.Add(btnExcluir);
+            Controls.Add(textBox3);
+            Controls.Add(label3);
+            Controls.Add(label4);
+            Controls.Add(dgvFornecedor);
+            Controls.Add(textBox4);
+            Controls.Add(btnIncluir);
+            Name = "FormFornecedor";
+            Text = "Fornecedores";
+            Load += FormFornecedor_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvFornecedor).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Button btnAtualizar;
+        private Button btnSalvar;
+        private Button btnExcluir;
+        private TextBox textBox3;
+        private Label label3;
+        private Label label4;
+        private DataGridView dgvFornecedor;
+        private TextBox textBox4;
+        private Button btnIncluir;
+        private Label label1;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Label label2;
+        private Label label5;
+        private TextBox textBox5;
+        private Label label6;
+        private TextBox textBox6;
+        private Label label7;
+        private TextBox textBox7;
+    }
+}

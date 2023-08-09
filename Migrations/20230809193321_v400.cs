@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace sysestoque_CyberKnight.Migrations
 {
     /// <inheritdoc />
-    public partial class v100 : Migration
+    public partial class v400 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,18 +31,20 @@ namespace sysestoque_CyberKnight.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Forncedores",
+                name: "Fornecedores",
                 columns: table => new
                 {
-                    Nome = table.Column<string>(type: "varchar(255)", nullable: false),
-                    Cnpj = table.Column<string>(type: "longtext", nullable: true),
+                    Cnpj = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Nome = table.Column<string>(type: "longtext", nullable: true),
                     Endereco = table.Column<string>(type: "longtext", nullable: true),
                     Telefone = table.Column<string>(type: "longtext", nullable: true),
-                    Email = table.Column<string>(type: "longtext", nullable: true)
+                    Email = table.Column<string>(type: "longtext", nullable: true),
+                    RazaoSocial = table.Column<string>(type: "longtext", nullable: true),
+                    Responsavel = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Forncedores", x => x.Nome);
+                    table.PrimaryKey("PK_Fornecedores", x => x.Cnpj);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -133,17 +135,17 @@ namespace sysestoque_CyberKnight.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     DataEntrada = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ValorTotal = table.Column<float>(type: "float", nullable: false),
-                    fornecedorNome = table.Column<string>(type: "varchar(255)", nullable: true),
+                    fornecedorCnpj = table.Column<string>(type: "varchar(255)", nullable: true),
                     ResponsavelEntradanome = table.Column<string>(type: "varchar(255)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_NotasEntrada", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_NotasEntrada_Forncedores_fornecedorNome",
-                        column: x => x.fornecedorNome,
-                        principalTable: "Forncedores",
-                        principalColumn: "Nome");
+                        name: "FK_NotasEntrada_Fornecedores_fornecedorCnpj",
+                        column: x => x.fornecedorCnpj,
+                        principalTable: "Fornecedores",
+                        principalColumn: "Cnpj");
                     table.ForeignKey(
                         name: "FK_NotasEntrada_Usuarios_ResponsavelEntradanome",
                         column: x => x.ResponsavelEntradanome,
@@ -156,17 +158,17 @@ namespace sysestoque_CyberKnight.Migrations
                 name: "FornecedorProduto",
                 columns: table => new
                 {
-                    FornecedoresNome = table.Column<string>(type: "varchar(255)", nullable: false),
+                    FornecedoresCnpj = table.Column<string>(type: "varchar(255)", nullable: false),
                     produtosid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FornecedorProduto", x => new { x.FornecedoresNome, x.produtosid });
+                    table.PrimaryKey("PK_FornecedorProduto", x => new { x.FornecedoresCnpj, x.produtosid });
                     table.ForeignKey(
-                        name: "FK_FornecedorProduto_Forncedores_FornecedoresNome",
-                        column: x => x.FornecedoresNome,
-                        principalTable: "Forncedores",
-                        principalColumn: "Nome",
+                        name: "FK_FornecedorProduto_Fornecedores_FornecedoresCnpj",
+                        column: x => x.FornecedoresCnpj,
+                        principalTable: "Fornecedores",
+                        principalColumn: "Cnpj",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_FornecedorProduto_Produtos_produtosid",
@@ -245,9 +247,9 @@ namespace sysestoque_CyberKnight.Migrations
                 column: "ProdutoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_NotasEntrada_fornecedorNome",
+                name: "IX_NotasEntrada_fornecedorCnpj",
                 table: "NotasEntrada",
-                column: "fornecedorNome");
+                column: "fornecedorCnpj");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NotasEntrada_ResponsavelEntradanome",
@@ -287,7 +289,7 @@ namespace sysestoque_CyberKnight.Migrations
                 name: "Produtos");
 
             migrationBuilder.DropTable(
-                name: "Forncedores");
+                name: "Fornecedores");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
