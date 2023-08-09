@@ -13,5 +13,5 @@ namespace sysestoque_CyberKnight
             ApplicationConfiguration.Initialize();
             Application.Run(new FormLogin());
         }
-    }
+     }
 }
