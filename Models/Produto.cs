@@ -33,11 +33,12 @@ namespace sysestoque_CyberKnight.Models
 
         public ICollection<NotaEntrada>? NotasEntrada { get; set; } = new List<NotaEntrada>();
 
+
         public ICollection<NotaEntrada>? ItemNotaEntrada { get; set; } = new List<NotaEntrada>();
 
         public ICollection<NotaSaida>? NotasSaida { get; set; } = new List<NotaSaida>();
 
-        public ICollection<NotaSaida>? ItemNotaSaida { get; set; } = new List<NotaSaida>();
+        public ICollection<NotaSaida>? ItemN580024547667otaSaida { get; set; } = new List<NotaSaida>();
 
         public ICollection<Fornecedor>? Fornecedores { get; set; } = new List<Fornecedor>();
 
