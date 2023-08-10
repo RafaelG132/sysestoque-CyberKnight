@@ -11,7 +11,7 @@ namespace sysestoque_CyberKnight.Models
     public class UnidadeMedida{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Sigla { get; set; }
         public string NomeExtenso { get; set; }
     }

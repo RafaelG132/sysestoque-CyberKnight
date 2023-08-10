@@ -59,5 +59,15 @@ namespace sysestoque_CyberKnight.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Apresentação_de_Plano_de_Marketing_Minimalista_Bege_e_Rosa {
+            get {
+                object obj = ResourceManager.GetObject("Apresentação de Plano de Marketing Minimalista Bege e Rosa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
