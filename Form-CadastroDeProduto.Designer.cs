@@ -43,11 +43,10 @@
             lbl_unidade = new Label();
             comboBox2 = new ComboBox();
             btn_atualizar = new Button();
-            btn_incluir = new Button();
             btn_excluir = new Button();
             btn_salvar = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dgv_Produto = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgv_Produto).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -178,62 +177,52 @@
             // btn_atualizar
             // 
             btn_atualizar.BackColor = Color.Transparent;
-            btn_atualizar.Location = new Point(241, 415);
+            btn_atualizar.Location = new Point(408, 415);
             btn_atualizar.Name = "btn_atualizar";
             btn_atualizar.Size = new Size(75, 23);
             btn_atualizar.TabIndex = 15;
             btn_atualizar.Text = "Atualizar";
             btn_atualizar.UseVisualStyleBackColor = false;
             // 
-            // btn_incluir
-            // 
-            btn_incluir.BackColor = Color.Transparent;
-            btn_incluir.Location = new Point(322, 415);
-            btn_incluir.Name = "btn_incluir";
-            btn_incluir.Size = new Size(75, 23);
-            btn_incluir.TabIndex = 16;
-            btn_incluir.Text = "Incluir";
-            btn_incluir.UseVisualStyleBackColor = false;
-            // 
             // btn_excluir
             // 
             btn_excluir.BackColor = Color.Transparent;
-            btn_excluir.Location = new Point(403, 415);
+            btn_excluir.Location = new Point(489, 415);
             btn_excluir.Name = "btn_excluir";
             btn_excluir.Size = new Size(75, 23);
             btn_excluir.TabIndex = 17;
             btn_excluir.Text = "Excluir";
             btn_excluir.UseVisualStyleBackColor = false;
+            btn_excluir.Click += btn_excluir_Click;
             // 
             // btn_salvar
             // 
             btn_salvar.BackColor = Color.Transparent;
-            btn_salvar.Location = new Point(484, 415);
+            btn_salvar.Location = new Point(489, 197);
             btn_salvar.Name = "btn_salvar";
             btn_salvar.Size = new Size(75, 23);
             btn_salvar.TabIndex = 18;
             btn_salvar.Text = "Salvar";
             btn_salvar.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgv_Produto
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(29, 226);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(510, 166);
-            dataGridView1.TabIndex = 19;
+            dgv_Produto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_Produto.Location = new Point(29, 226);
+            dgv_Produto.Name = "dgv_Produto";
+            dgv_Produto.RowTemplate.Height = 25;
+            dgv_Produto.Size = new Size(510, 166);
+            dgv_Produto.TabIndex = 19;
             // 
             // Form_CadastroDeProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Apresentação_de_Plano_de_Marketing_Minimalista_Bege_e_Rosa;
-            ClientSize = new Size(566, 450);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(576, 455);
+            Controls.Add(dgv_Produto);
             Controls.Add(btn_salvar);
             Controls.Add(btn_excluir);
-            Controls.Add(btn_incluir);
             Controls.Add(btn_atualizar);
             Controls.Add(comboBox2);
             Controls.Add(lbl_unidade);
@@ -250,9 +239,11 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form_CadastroDeProduto";
-            Text = "Form_CadastroDeProduto";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Cadastro De Produtos";
+            WindowState = FormWindowState.Maximized;
             Load += Form_CadastroDeProduto_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_Produto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -272,9 +263,9 @@
         private Label lbl_unidade;
         private ComboBox comboBox2;
         private Button btn_atualizar;
-        private Button btn_incluir;
         private Button btn_excluir;
         private Button btn_salvar;
         private DataGridView dataGridView1;
+        private DataGridView dgv_Produto;
     }
 }
