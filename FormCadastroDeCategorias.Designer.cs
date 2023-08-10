@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroDeCategorias));
-            textBox3 = new TextBox();
+            txtDescricao = new TextBox();
             label3 = new Label();
             label4 = new Label();
             label1 = new Label();
-            textBox4 = new TextBox();
-            textBox1 = new TextBox();
+            txtNome = new TextBox();
+            txtId = new TextBox();
             dgvCategoria = new DataGridView();
-            btnExcluir = new Button();
-            btnSalvar = new Button();
-            btnAtualizar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
             Descricao = new DataGridViewTextBoxColumn();
+            btnExcluir = new Button();
+            btnSalvar = new Button();
+            btnAtualizar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             SuspendLayout();
             // 
-            // textBox3
+            // txtDescricao
             // 
-            textBox3.Location = new Point(79, 111);
-            textBox3.MaxLength = 100;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(381, 23);
-            textBox3.TabIndex = 5;
+            txtDescricao.Location = new Point(79, 111);
+            txtDescricao.MaxLength = 100;
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(381, 23);
+            txtDescricao.TabIndex = 5;
             // 
             // label3
             // 
@@ -87,21 +87,21 @@
             label1.Text = "Id:";
             label1.Click += label1_Click;
             // 
-            // textBox4
+            // txtNome
             // 
-            textBox4.Location = new Point(66, 67);
-            textBox4.MaxLength = 100;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(394, 23);
-            textBox4.TabIndex = 7;
+            txtNome.Location = new Point(66, 67);
+            txtNome.MaxLength = 100;
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(394, 23);
+            txtNome.TabIndex = 7;
             // 
-            // textBox1
+            // txtId
             // 
-            textBox1.Location = new Point(51, 28);
-            textBox1.MaxLength = 100;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(95, 23);
-            textBox1.TabIndex = 1;
+            txtId.Location = new Point(51, 28);
+            txtId.MaxLength = 100;
+            txtId.Name = "txtId";
+            txtId.Size = new Size(95, 23);
+            txtId.TabIndex = 1;
             // 
             // dgvCategoria
             // 
@@ -114,42 +114,6 @@
             dgvCategoria.RowTemplate.Height = 25;
             dgvCategoria.Size = new Size(769, 195);
             dgvCategoria.TabIndex = 9;
-            // 
-            // btnExcluir
-            // 
-            btnExcluir.BackColor = Color.Transparent;
-            btnExcluir.ForeColor = SystemColors.ControlText;
-            btnExcluir.Location = new Point(637, 422);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(75, 23);
-            btnExcluir.TabIndex = 12;
-            btnExcluir.Text = "Excluir";
-            btnExcluir.UseVisualStyleBackColor = false;
-            // 
-            // btnSalvar
-            // 
-            btnSalvar.BackColor = Color.Transparent;
-            btnSalvar.BackgroundImageLayout = ImageLayout.None;
-            btnSalvar.Cursor = Cursors.Hand;
-            btnSalvar.ForeColor = SystemColors.ControlText;
-            btnSalvar.Location = new Point(718, 169);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(75, 23);
-            btnSalvar.TabIndex = 13;
-            btnSalvar.Text = "Salvar";
-            btnSalvar.UseVisualStyleBackColor = false;
-            // 
-            // btnAtualizar
-            // 
-            btnAtualizar.BackColor = Color.Transparent;
-            btnAtualizar.ForeColor = SystemColors.ControlText;
-            btnAtualizar.Location = new Point(718, 422);
-            btnAtualizar.Name = "btnAtualizar";
-            btnAtualizar.Size = new Size(75, 23);
-            btnAtualizar.TabIndex = 14;
-            btnAtualizar.Text = "Atualizar";
-            btnAtualizar.UseVisualStyleBackColor = false;
-            btnAtualizar.UseWaitCursor = true;
             // 
             // Id
             // 
@@ -169,6 +133,44 @@
             Descricao.HeaderText = "Descrição";
             Descricao.Name = "Descricao";
             // 
+            // btnExcluir
+            // 
+            btnExcluir.BackColor = Color.Transparent;
+            btnExcluir.ForeColor = SystemColors.ControlText;
+            btnExcluir.Location = new Point(637, 422);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.TabIndex = 12;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.BackColor = Color.Transparent;
+            btnSalvar.BackgroundImageLayout = ImageLayout.None;
+            btnSalvar.Cursor = Cursors.Hand;
+            btnSalvar.ForeColor = SystemColors.ControlText;
+            btnSalvar.Location = new Point(718, 169);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 23);
+            btnSalvar.TabIndex = 13;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.BackColor = Color.Transparent;
+            btnAtualizar.ForeColor = SystemColors.ControlText;
+            btnAtualizar.Location = new Point(718, 422);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 23);
+            btnAtualizar.TabIndex = 14;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizar.UseWaitCursor = true;
+            // 
             // FormCadastroDeCategorias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -180,13 +182,13 @@
             Controls.Add(btnAtualizar);
             Controls.Add(btnSalvar);
             Controls.Add(btnExcluir);
-            Controls.Add(textBox3);
+            Controls.Add(txtDescricao);
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(dgvCategoria);
             Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(textBox4);
+            Controls.Add(txtId);
+            Controls.Add(txtNome);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormCadastroDeCategorias";
             Text = "Cadastro de Categorias";
@@ -198,12 +200,12 @@
 
         #endregion
 
-        private TextBox textBox3;
+        private TextBox txtDescricao;
         private Label label3;
         private Label label4;
         private Label label1;
-        private TextBox textBox4;
-        private TextBox textBox1;
+        private TextBox txtNome;
+        private TextBox txtId;
         private DataGridView dgvCategoria;
         private Button btnExcluir;
         private Button btnSalvar;

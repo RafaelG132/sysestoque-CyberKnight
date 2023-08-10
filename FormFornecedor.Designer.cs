@@ -32,22 +32,22 @@
             btnAtualizar = new Button();
             btnSalvar = new Button();
             btnExcluir = new Button();
-            textBox3 = new TextBox();
+            txtTelefone = new TextBox();
             label3 = new Label();
             label4 = new Label();
             dgvFornecedor = new DataGridView();
-            textBox4 = new TextBox();
+            txtNome = new TextBox();
             btnIncluir = new Button();
             label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtEndereco = new TextBox();
+            txtCNPJ = new TextBox();
             label2 = new Label();
             label5 = new Label();
-            textBox5 = new TextBox();
+            txtEmail = new TextBox();
             label6 = new Label();
-            textBox6 = new TextBox();
+            txtResponsavel = new TextBox();
             label7 = new Label();
-            textBox7 = new TextBox();
+            txtRazaoSocial = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvFornecedor).BeginInit();
             SuspendLayout();
             // 
@@ -75,6 +75,7 @@
             btnSalvar.TabIndex = 22;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnExcluir
             // 
@@ -86,14 +87,15 @@
             btnExcluir.TabIndex = 21;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
-            // textBox3
+            // txtTelefone
             // 
-            textBox3.Location = new Point(330, 40);
-            textBox3.MaxLength = 100;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(189, 23);
-            textBox3.TabIndex = 16;
+            txtTelefone.Location = new Point(330, 40);
+            txtTelefone.MaxLength = 100;
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.Size = new Size(189, 23);
+            txtTelefone.TabIndex = 16;
             // 
             // label3
             // 
@@ -128,13 +130,13 @@
             dgvFornecedor.TabIndex = 19;
             dgvFornecedor.CellContentClick += dgvFornecedor_CellContentClick;
             // 
-            // textBox4
+            // txtNome
             // 
-            textBox4.Location = new Point(61, 85);
-            textBox4.MaxLength = 100;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(327, 23);
-            textBox4.TabIndex = 18;
+            txtNome.Location = new Point(61, 85);
+            txtNome.MaxLength = 100;
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(327, 23);
+            txtNome.TabIndex = 18;
             // 
             // btnIncluir
             // 
@@ -159,21 +161,21 @@
             label1.Text = "Endereço:";
             label1.Click += label1_Click;
             // 
-            // textBox1
+            // txtEndereco
             // 
-            textBox1.Location = new Point(61, 131);
-            textBox1.MaxLength = 100;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(327, 23);
-            textBox1.TabIndex = 25;
+            txtEndereco.Location = new Point(61, 131);
+            txtEndereco.MaxLength = 100;
+            txtEndereco.Name = "txtEndereco";
+            txtEndereco.Size = new Size(327, 23);
+            txtEndereco.TabIndex = 25;
             // 
-            // textBox2
+            // txtCNPJ
             // 
-            textBox2.Location = new Point(61, 40);
-            textBox2.MaxLength = 100;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(189, 23);
-            textBox2.TabIndex = 27;
+            txtCNPJ.Location = new Point(61, 40);
+            txtCNPJ.MaxLength = 100;
+            txtCNPJ.Name = "txtCNPJ";
+            txtCNPJ.Size = new Size(189, 23);
+            txtCNPJ.TabIndex = 27;
             // 
             // label2
             // 
@@ -197,13 +199,13 @@
             label5.TabIndex = 28;
             label5.Text = "E-mail:";
             // 
-            // textBox5
+            // txtEmail
             // 
-            textBox5.Location = new Point(61, 174);
-            textBox5.MaxLength = 100;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(327, 23);
-            textBox5.TabIndex = 29;
+            txtEmail.Location = new Point(61, 174);
+            txtEmail.MaxLength = 100;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(327, 23);
+            txtEmail.TabIndex = 29;
             // 
             // label6
             // 
@@ -216,13 +218,13 @@
             label6.TabIndex = 32;
             label6.Text = "Responsável:";
             // 
-            // textBox6
+            // txtResponsavel
             // 
-            textBox6.Location = new Point(476, 177);
-            textBox6.MaxLength = 100;
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(323, 23);
-            textBox6.TabIndex = 33;
+            txtResponsavel.Location = new Point(476, 177);
+            txtResponsavel.MaxLength = 100;
+            txtResponsavel.Name = "txtResponsavel";
+            txtResponsavel.Size = new Size(323, 23);
+            txtResponsavel.TabIndex = 33;
             // 
             // label7
             // 
@@ -235,13 +237,13 @@
             label7.TabIndex = 30;
             label7.Text = "Razão Social:";
             // 
-            // textBox7
+            // txtRazaoSocial
             // 
-            textBox7.Location = new Point(476, 134);
-            textBox7.MaxLength = 100;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(323, 23);
-            textBox7.TabIndex = 31;
+            txtRazaoSocial.Location = new Point(476, 134);
+            txtRazaoSocial.MaxLength = 100;
+            txtRazaoSocial.Name = "txtRazaoSocial";
+            txtRazaoSocial.Size = new Size(323, 23);
+            txtRazaoSocial.TabIndex = 31;
             // 
             // FormFornecedor
             // 
@@ -250,23 +252,23 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(817, 450);
             Controls.Add(label6);
-            Controls.Add(textBox6);
+            Controls.Add(txtResponsavel);
             Controls.Add(label7);
-            Controls.Add(textBox7);
+            Controls.Add(txtRazaoSocial);
             Controls.Add(label5);
-            Controls.Add(textBox5);
-            Controls.Add(textBox2);
+            Controls.Add(txtEmail);
+            Controls.Add(txtCNPJ);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(txtEndereco);
             Controls.Add(btnAtualizar);
             Controls.Add(btnSalvar);
             Controls.Add(btnExcluir);
-            Controls.Add(textBox3);
+            Controls.Add(txtTelefone);
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(dgvFornecedor);
-            Controls.Add(textBox4);
+            Controls.Add(txtNome);
             Controls.Add(btnIncluir);
             Name = "FormFornecedor";
             Text = "Fornecedores";
@@ -281,21 +283,21 @@
         private Button btnAtualizar;
         private Button btnSalvar;
         private Button btnExcluir;
-        private TextBox textBox3;
+        private TextBox txtTelefone;
         private Label label3;
         private Label label4;
         private DataGridView dgvFornecedor;
-        private TextBox textBox4;
+        private TextBox txtNome;
         private Button btnIncluir;
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtEndereco;
+        private TextBox txtCNPJ;
         private Label label2;
         private Label label5;
-        private TextBox textBox5;
+        private TextBox txtEmail;
         private Label label6;
-        private TextBox textBox6;
+        private TextBox txtResponsavel;
         private Label label7;
-        private TextBox textBox7;
+        private TextBox txtRazaoSocial;
     }
 }

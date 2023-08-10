@@ -11,17 +11,21 @@ using System.Windows.Forms;
 
 namespace sysestoque_CyberKnight
 {
-    public partial class FormFornecedor : Form{
-        ICollection<Fornecedor> fornecedor = new List<Fornecedor>();
-        BindingSource bindingSourceFornecedor= new BindingSource();
+    public partial class FormFornecedor : Form
+    {
+        ICollection<Fornecedor> listaFornecedor = new List<Fornecedor>();
+        BindingSource bindingSourceFornecedor = new BindingSource();
+        Fornecedor fornecedor = new Fornecedor();
 
-        public FormFornecedor(){
+        public FormFornecedor()
+        {
             InitializeComponent();
 
-            using (var db = new EstoqueContext()){
-                fornecedor = db.Fornecedores.ToList();
+            using (var db = new EstoqueContext())
+            {
+                listaFornecedor = db.Fornecedores.ToList();
 
-                bindingSourceFornecedor.DataSource = fornecedor;
+                bindingSourceFornecedor.DataSource = listaFornecedor;
 
                 dgvFornecedor.DataSource = bindingSourceFornecedor;
             }
@@ -45,6 +49,55 @@ namespace sysestoque_CyberKnight
 
         private void dgvFornecedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (dgvFornecedor.SelectedRows.Count > 0)
+            {
+
+                fornecedor = (dgvFornecedor.SelectedRows[0].DataBoundItem as Fornecedor);
+
+                //Remove a categoria do DataGridView
+                bindingSourceFornecedor.Remove(listaFornecedor);
+
+                //Remove do Banco de Dados
+                using (var db = new EstoqueContext())
+                {
+                    db.Fornecedores.Remove(fornecedor);
+                    db.SaveChanges();
+
+                }
+
+            }
+
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e){
+
+            fornecedor.Cnpj = null;
+            fornecedor.Nome = txtNome.Text;
+            fornecedor.Endereco = txtEndereco.Text;
+            fornecedor.Telefone = txtTelefone.Text;
+            fornecedor.Email = txtEmail.Text;
+            fornecedor.RazaoSocial = txtRazaoSocial.Text;
+            fornecedor.Responsavel = txtResponsavel.Text;
+
+            using (var db = new EstoqueContext()){
+                db.Fornecedores.Add(fornecedor);
+                db.SaveChanges();
+
+                listaFornecedor = db.Fornecedores.ToList();
+
+                bindingSourceFornecedor.DataSource = listaFornecedor;
+
+                dgvFornecedor.DataSource = bindingSourceFornecedor;
+
+                dgvFornecedor.Refresh();
+
+            }
+
 
         }
     }
