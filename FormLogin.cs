@@ -1,5 +1,4 @@
-﻿using sysestoque_CyberKnight.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,57 +10,52 @@ using System.Windows.Forms;
 
 namespace sysestoque_CyberKnight
 {
-    public partial class FormLogin : Form
+    public partial class Form_Login : Form
     {
-        public FormLogin()
+        public Form_Login()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            string login = txbLogin.Text;
-            string senha = txbSenha.Text;
 
-            Usuario usuario = null;
-            // Busca o usuário no banco de dados
-            using (var db = new EstoqueContext())
-            {
-                usuario = db.Usuarios.FirstOrDefault(u => u.login == login);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e){
+
+            try{
+                if (txbSenha.UseSystemPasswordChar){
+                    txbSenha.UseSystemPasswordChar = !txbSenha.UseSystemPasswordChar;
+                    pb_olho.Image = Image.FromFile(@"C:\Users\suporte\Downloads\olho_aberto.png");
+                }else{
+                    txbSenha.UseSystemPasswordChar = !txbSenha.UseSystemPasswordChar;
+                    pb_olho.Image = Image.FromFile(@"C:\Users\suporte\Downloads\fechar_olho.png");
+                }
+
+            }catch{
 
             }
-
-            if (usuario != null)
-            {
-                //Teste da senha
-                if (usuario.login == login)
-                {
-                    //Bloco de código caso a senha do banco de dados seja igual a senha digitada pelo usuário
-                    MessageBox.Show("Usuário logado com sucesso");
-                }
-                else
-                {
-                    //Bloco de código caso a senha seja diferente
-                    MessageBox.Show("Acesso negado");
-                }
-            }
-        }
-
-        private void txtSenha_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnVerSenha_Click(object sender, EventArgs e)
-        {
-            txbSenha.UseSystemPasswordChar = !txbSenha.UseSystemPasswordChar;
-
         }
     }
 }
-
