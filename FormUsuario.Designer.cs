@@ -29,40 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsuario));
-            dataGridView1 = new DataGridView();
+            dgvUsuario = new DataGridView();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
-            textBox1 = new TextBox();
+            txbLogin = new TextBox();
             textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            txbNome = new TextBox();
+            btnExcluir = new Button();
+            btnAtualizar = new Button();
+            btnSalvar = new Button();
+            label3 = new Label();
+            label5 = new Label();
             textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            txbSenha = new TextBox();
+            txbTelefone = new TextBox();
+            txbCpf = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvUsuario
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 187);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(704, 206);
-            dataGridView1.TabIndex = 0;
+            dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuario.Location = new Point(12, 187);
+            dgvUsuario.Name = "dgvUsuario";
+            dgvUsuario.RowTemplate.Height = 25;
+            dgvUsuario.Size = new Size(704, 206);
+            dgvUsuario.TabIndex = 0;
+            dgvUsuario.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(14, 19);
+            label1.Location = new Point(8, 59);
             label1.Name = "label1";
             label1.Size = new Size(43, 15);
             label1.TabIndex = 2;
@@ -72,117 +73,119 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Location = new Point(21, 68);
+            label2.Location = new Point(15, 102);
             label2.Name = "label2";
             label2.Size = new Size(29, 15);
             label2.TabIndex = 2;
             label2.Text = "Cpf:";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Location = new Point(173, 68);
-            label3.Name = "label3";
-            label3.Size = new Size(54, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Telefone:";
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
-            label4.Location = new Point(14, 122);
+            label4.Location = new Point(8, 15);
             label4.Name = "label4";
             label4.Size = new Size(40, 15);
             label4.TabIndex = 2;
             label4.Text = "Login:";
             // 
+            // txbLogin
+            // 
+            txbLogin.Location = new Point(52, 12);
+            txbLogin.Name = "txbLogin";
+            txbLogin.Size = new Size(175, 23);
+            txbLogin.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(52, 99);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 3;
+            // 
+            // txbNome
+            // 
+            txbNome.Location = new Point(52, 56);
+            txbNome.Name = "txbNome";
+            txbNome.Size = new Size(204, 23);
+            txbNome.TabIndex = 3;
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(12, 415);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.TabIndex = 4;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.Location = new Point(110, 415);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(75, 23);
+            btnAtualizar.TabIndex = 4;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Location = new Point(641, 158);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(75, 23);
+            btnSalvar.TabIndex = 4;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Location = new Point(262, 59);
+            label3.Name = "label3";
+            label3.Size = new Size(54, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Telefone:";
+            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
-            label5.Location = new Point(246, 22);
+            label5.Location = new Point(244, 15);
             label5.Name = "label5";
             label5.Size = new Size(42, 15);
             label5.TabIndex = 2;
             label5.Text = "Senha:";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(58, 119);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(175, 23);
-            textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(58, 65);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 3;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(58, 16);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(175, 23);
-            textBox3.TabIndex = 3;
-            // 
             // textBox4
             // 
-            textBox4.Location = new Point(290, 19);
+            textBox4.Location = new Point(288, 12);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(100, 23);
             textBox4.TabIndex = 3;
             // 
-            // textBox5
+            // txbSenha
             // 
-            textBox5.Location = new Point(290, 19);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(154, 23);
-            textBox5.TabIndex = 3;
+            txbSenha.Location = new Point(288, 12);
+            txbSenha.Name = "txbSenha";
+            txbSenha.Size = new Size(167, 23);
+            txbSenha.TabIndex = 3;
             // 
-            // textBox6
+            // txbTelefone
             // 
-            textBox6.Location = new Point(58, 65);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(100, 23);
-            textBox6.TabIndex = 3;
+            txbTelefone.Location = new Point(322, 56);
+            txbTelefone.Name = "txbTelefone";
+            txbTelefone.Size = new Size(124, 23);
+            txbTelefone.TabIndex = 3;
             // 
-            // textBox7
+            // txbCpf
             // 
-            textBox7.Location = new Point(233, 65);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(124, 23);
-            textBox7.TabIndex = 3;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(12, 415);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 4;
-            button1.Text = "Excluir";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(110, 415);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 4;
-            button2.Text = "Atualizar";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(641, 158);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 4;
-            button3.Text = "Salvar";
-            button3.UseVisualStyleBackColor = true;
+            txbCpf.Location = new Point(52, 99);
+            txbCpf.Name = "txbCpf";
+            txbCpf.Size = new Size(100, 23);
+            txbCpf.TabIndex = 3;
             // 
             // FormUsuario
             // 
@@ -190,47 +193,47 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox6);
+            Controls.Add(btnSalvar);
+            Controls.Add(btnAtualizar);
+            Controls.Add(btnExcluir);
+            Controls.Add(txbCpf);
             Controls.Add(textBox2);
-            Controls.Add(textBox7);
-            Controls.Add(textBox5);
+            Controls.Add(txbTelefone);
+            Controls.Add(txbSenha);
             Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox1);
+            Controls.Add(txbNome);
+            Controls.Add(txbLogin);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvUsuario);
             Name = "FormUsuario";
             Text = "FormUsuario";
             Load += FormUsuario_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvUsuario;
         private Label label1;
         private Label label2;
-        private Label label3;
         private Label label4;
-        private Label label5;
-        private TextBox textBox1;
+        private TextBox txbLogin;
         private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txbNome;
+        private Button btnExcluir;
+        private Button btnAtualizar;
+        private Button btnSalvar;
+        private Label label3;
+        private Label label5;
         private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private TextBox txbSenha;
+        private TextBox txbTelefone;
+        private TextBox txbCpf;
     }
 }
