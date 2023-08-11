@@ -11,11 +11,16 @@ using System.Windows.Forms;
 
 namespace sysestoque_CyberKnight
 {
-    public partial class Form_CadastroDeProduto : Form{
+    public partial class Form_CadastroDeProduto : Form
+    {
 
-        ICollection<Produto> Produtos = new List<Produto>();
+        ICollection<Produto> produtos = new List<Produto>();
         BindingSource bindingSourceProdutos = new BindingSource();
-        Produto Produto = new Produto();
+
+        Produto produto = new Produto();
+
+        private bool EstaAtualizando = false;
+
         public Form_CadastroDeProduto()
         {
 
@@ -23,46 +28,88 @@ namespace sysestoque_CyberKnight
 
             using (var db = new EstoqueContext())
             {
-                Produtos = db.Produtos.ToList();
+                produtos = db.Produtos.ToList();
 
-                bindingSourceProdutos.DataSource = Produtos;
+                bindingSourceProdutos.DataSource = produtos;
 
                 dgv_Produto.DataSource = bindingSourceProdutos;
             }
         }
-        
 
-        private void label1_BindingContextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form_CadastroDeProduto_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_produtos_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_excluir_Click(object sender, EventArgs e)
         {
 
-            if (dgv_Produto.SelectedRows.Count > 0) {
-                
-                Produto = dgv_Produto.SelectedRows[0].DataBoundItem as Produto;
+            if (dgv_Produto.SelectedRows.Count > 0)
+            {
 
-                bindingSourceProdutos.Remove(Produto);
+                produto = dgv_Produto.SelectedRows[0].DataBoundItem as Produto;
 
-                using (var db = new EstoqueContext()) {
-                    db.Produtos.Remove(Produto);
+                bindingSourceProdutos.Remove(produto);
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Produtos.Remove(produto);
                     db.SaveChanges();
 
 
 
 
+                }
+            }
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_salvar_Click(object sender, EventArgs e)
+        {
+            if (EstaAtualizando)
+            {
+
+            }
+            else
+            {
+                produto.id = null;
+                produto.categoria = txtcategoria.Text;
+                produto.estoque = txtqtd.Text;
+                produto.descricao = txtdescricao.Text;
+                produto.precounit = txtprecounit.Text;
+                produto.estoqueMax = float.Parse(txtestoquemax.Text);
+                produto.estoqueMedio = float.Parse(txtestoquemedio.Text);
+                produto.estoqueMin = float.Parse(txtestoqueMin.Text);
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Produtos.Add(produto);
+                    db.SaveChanges();
+
+                    produtos = db.Produtos.ToList();
+
+                    bindingSourceProdutos.DataSource = produtos;
+
+                    dgv_Produto.DataSource = bindingSourceProdutos;
+                    dgv_Produto.Refresh();
+
+                }
+            }
+
+
+
+
+
+
+        }
+
+        private void btn_atualizar_Click(object sender, EventArgs e)
+        {
+            if (dgv_Produto.SelectedRows.Count > 0){
+                produto = dgv_Produto.SelectedRows[0].DataBoundItem as Produto;
+
+                
+            }
         }
     }
+
 }

@@ -11,19 +11,19 @@ namespace sysestoque_CyberKnight.Models
 {
     public class Produto {
         [Key]
-        public int id { get; set; }
+        public int? id { get; set; }
         public string nome { get; set; }
-
         public string descricao { get; set; }
         public string estoque { get; set; }
+        public string precounit { get; set; }   
         public string unidadeMedida { get; set; }
         public float estoqueMax { get; set; }
         public float estoqueMedio { get; set; }
-        public float estoqueMin { get; }
+        public float estoqueMin { get; set; }
 
-        [ForeignKey(nameof(Categoria))]
+        [ForeignKey(nameof(categoria))]
         public int CategoriaId { get; set; } 
-        public Categoria? Categoria { get; set; }
+        public string categoria { get; set; }
 
 
         [ForeignKey(nameof(UnidadeMedida))]
