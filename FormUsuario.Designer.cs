@@ -50,11 +50,13 @@
             // 
             // dgvUsuario
             // 
+            dgvUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuario.Location = new Point(12, 187);
             dgvUsuario.Name = "dgvUsuario";
             dgvUsuario.RowTemplate.Height = 25;
-            dgvUsuario.Size = new Size(704, 206);
+            dgvUsuario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUsuario.Size = new Size(776, 206);
             dgvUsuario.TabIndex = 0;
             dgvUsuario.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -128,10 +130,11 @@
             btnAtualizar.TabIndex = 4;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnSalvar
             // 
-            btnSalvar.Location = new Point(641, 158);
+            btnSalvar.Location = new Point(713, 158);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 23);
             btnSalvar.TabIndex = 4;
@@ -192,7 +195,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(853, 450);
             Controls.Add(btnSalvar);
             Controls.Add(btnAtualizar);
             Controls.Add(btnExcluir);

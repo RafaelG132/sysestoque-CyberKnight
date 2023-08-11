@@ -16,9 +16,21 @@ namespace sysestoque_CyberKnight
         ICollection<Usuario> usuarios = new List<Usuario>();
         BindingSource bindingSourceUsuarios = new BindingSource();
         Usuario usuario = new Usuario();
+
+        private bool EstaAtualizando = false;
+
         public FormUsuario()
         {
             InitializeComponent();
+
+            using (var db = new EstoqueContext())
+            {
+
+                usuarios = db.Usuarios.ToList();
+                bindingSourceUsuarios.DataSource = usuarios;
+                dgvUsuario.DataSource = bindingSourceUsuarios;
+            }
+
         }
 
         private void FormUsuario_Load(object sender, EventArgs e)
@@ -59,9 +71,22 @@ namespace sysestoque_CyberKnight
             }
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            usuario.cpf = null;
+        private void btnSalvar_Click(object sender, EventArgs e){
+
+            if (EstaAtualizando) {
+                //Pegar o dado formulario e atualiza no banco de dados
+                EstaAtualizando = false;
+
+
+            } else{
+                //Pegar o dado fromulario e vai inserir no banco de  dados
+            } 
+
+
+
+
+
+            usuario.cpf = txbCpf.Text;
             usuario.nome = txbNome.Text;
             usuario.login = txbLogin.Text;
             usuario.HashSenha = txbSenha.Text;
@@ -77,6 +102,20 @@ namespace sysestoque_CyberKnight
                 dgvUsuario.DataSource = bindingSourceUsuarios;
                 dgvUsuario.Refresh();
 
+            }
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e){
+            if (dgvUsuario.SelectedRows.Count > 0) {
+
+                usuario = dgvUsuario.SelectedRows[0].DataBoundItem as Usuario;
+
+                txbCpf.Text = usuario.cpf.ToString();
+                txbNome.Text = usuario.nome;
+                txbLogin.Text = usuario.login;
+                txbTelefone.Text = usuario.telefone;
+
+                EstaAtualizando = true; 
             }
         }
     }

@@ -4,9 +4,9 @@ namespace sysestoque_CyberKnight.Models {
     public class Usuario{
         [Key]
         [Required] // Mesmo que o NOT NULL
-        public string nome { get; set; }
-        [Required]
         public string cpf { get; set; }
+        [Required]
+        public string nome { get; set; }
         [Required]
         public string login { get; set; }
         [Required]
