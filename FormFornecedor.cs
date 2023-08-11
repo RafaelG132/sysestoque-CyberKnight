@@ -17,6 +17,8 @@ namespace sysestoque_CyberKnight
         BindingSource bindingSourceFornecedor = new BindingSource();
         Fornecedor fornecedor = new Fornecedor();
 
+        private bool EstaAtualizando = false;
+
         public FormFornecedor()
         {
             InitializeComponent();
@@ -74,9 +76,20 @@ namespace sysestoque_CyberKnight
 
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e){
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (EstaAtualizando)
+            {
+                //Pega o dado formulário e atualiza no banco de dados
+                EstaAtualizando = false;
 
-            fornecedor.Cnpj = null;
+            }
+            else
+            {
+                //Pega o dado formulário e vai inserir no banco de dados
+            }
+
+            fornecedor.Cnpj = txtCNPJ.Text;
             fornecedor.Nome = txtNome.Text;
             fornecedor.Endereco = txtEndereco.Text;
             fornecedor.Telefone = txtTelefone.Text;
@@ -84,7 +97,8 @@ namespace sysestoque_CyberKnight
             fornecedor.RazaoSocial = txtRazaoSocial.Text;
             fornecedor.Responsavel = txtResponsavel.Text;
 
-            using (var db = new EstoqueContext()){
+            using (var db = new EstoqueContext())
+            {
                 db.Fornecedores.Add(fornecedor);
                 db.SaveChanges();
 
@@ -99,6 +113,30 @@ namespace sysestoque_CyberKnight
             }
 
 
+        }
+
+        private void btnIncluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            if (dgvFornecedor.SelectedRows.Count > 0)
+            {
+                fornecedor = (dgvFornecedor.SelectedRows[0].DataBoundItem as Fornecedor);
+
+                txtCNPJ.Text = fornecedor.Cnpj.ToString();
+                txtNome.Text = fornecedor.Nome;
+                txtEndereco.Text = fornecedor.Endereco;
+                txtTelefone.Text = fornecedor.Telefone;
+                txtEmail.Text = fornecedor.Email;
+                txtRazaoSocial.Text = fornecedor.RazaoSocial;
+                txtResponsavel.Text = fornecedor.Responsavel;
+
+                EstaAtualizando = true;
+
+            }
         }
     }
 }

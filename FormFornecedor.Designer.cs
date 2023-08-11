@@ -62,6 +62,7 @@
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
             btnAtualizar.UseWaitCursor = true;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnSalvar
             // 
@@ -126,6 +127,7 @@
             dgvFornecedor.Location = new Point(21, 222);
             dgvFornecedor.Name = "dgvFornecedor";
             dgvFornecedor.RowTemplate.Height = 25;
+            dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFornecedor.Size = new Size(769, 166);
             dgvFornecedor.TabIndex = 19;
             dgvFornecedor.CellContentClick += dgvFornecedor_CellContentClick;
@@ -148,6 +150,7 @@
             btnIncluir.TabIndex = 20;
             btnIncluir.Text = "Incluir";
             btnIncluir.UseVisualStyleBackColor = false;
+            btnIncluir.Click += btnIncluir_Click;
             // 
             // label1
             // 

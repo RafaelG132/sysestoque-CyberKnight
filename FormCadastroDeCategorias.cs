@@ -17,6 +17,9 @@ namespace sysestoque_CyberKnight
         ICollection<Categoria> listaCategoria = new List<Categoria>();
         BindingSource bindingSourceCategorias = new BindingSource();
         Categoria categoria = new Categoria();
+
+        private bool EstaAtualizando = false;
+
         public FormCadastroDeCategorias()
         {
             InitializeComponent();
@@ -70,12 +73,20 @@ namespace sysestoque_CyberKnight
         }
 
         private void btnSalvar_Click(object sender, EventArgs e){
+            if (EstaAtualizando){
+                //Pega o dado formulário e atualiza no banco de dados
+                EstaAtualizando = false;
+
+            }else{
+                //Pega o dado formulário e vai inserir no banco de dados
+            }
 
             categoria.Id = null;
-            categoria.Nome = txtNome.Text;
+            categoria.Nome = cbNome.Text;
             categoria.Descricao = txtDescricao.Text;
 
-            using (var db = new EstoqueContext()){
+            using (var db = new EstoqueContext())
+            {
                 db.Categorias.Add(categoria);
                 db.SaveChanges();
 
@@ -88,6 +99,25 @@ namespace sysestoque_CyberKnight
                 dgvCategoria.Refresh();
             }
 
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e){
+            if (dgvCategoria.SelectedRows.Count > 0){
+                categoria = (dgvCategoria.SelectedRows[0].DataBoundItem as Categoria);
+
+                txtId.Text = categoria.Id.ToString();
+                cbNome.Text = categoria.Nome;
+                txtDescricao.Text = categoria.Descricao;
+
+                EstaAtualizando = true;
+
+            }
         }
     }
 }
