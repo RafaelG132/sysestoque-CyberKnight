@@ -42,8 +42,12 @@ namespace sysestoque_CyberKnight
                 else
                 {
                     //Bloco de código caso a senha seja diferente
-                    MessageBox.Show("Acesso negado");
+                    MessageBox.Show("Wrong passwd");
                 }
+            }
+            else
+            {
+                    MessageBox.Show("User not found");
             }
         }
 

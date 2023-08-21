@@ -1,4 +1,5 @@
-﻿using sysestoque_CyberKnight.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_CyberKnight.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,10 @@ namespace sysestoque_CyberKnight
 
             using (var db = new EstoqueContext())
             {
+
+                db.Database.GetConnectionString();
+
+
                 listaCategoria = db.Categorias.ToList();
 
                 bindingSourceCategorias.DataSource = listaCategoria;
@@ -72,52 +77,88 @@ namespace sysestoque_CyberKnight
 
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e){
-            if (EstaAtualizando){
-                //Pega o dado formulário e atualiza no banco de dados
-                EstaAtualizando = false;
-
-            }else{
-                //Pega o dado formulário e vai inserir no banco de dados
-            }
-
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
             categoria.Id = null;
-            categoria.Nome = cbNome.Text;
+            categoria.Nome = txtNome.Text;
             categoria.Descricao = txtDescricao.Text;
 
-            using (var db = new EstoqueContext())
+            if (EstaAtualizando)
             {
-                db.Categorias.Add(categoria);
-                db.SaveChanges();
 
-                listaCategoria = db.Categorias.ToList();
+                categoria.Id = int.Parse(txtId.Text);
 
-                bindingSourceCategorias.DataSource = listaCategoria;
+                using (var db = new EstoqueContext())
+                {
+                    db.Categorias.Update(categoria);
+                    db.SaveChanges();
 
-                dgvCategoria.DataSource = bindingSourceCategorias;
+                    listaCategoria = db.Categorias.ToList();
 
-                dgvCategoria.Refresh();
+                    bindingSourceCategorias.DataSource = listaCategoria;
+
+                    dgvCategoria.DataSource = bindingSourceCategorias;
+
+                    dgvCategoria.Refresh();
+                }
+
+
+                EstaAtualizando = false;
+
+            }
+            else
+            {
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Categorias.Add(categoria);
+                    db.SaveChanges();
+
+                    listaCategoria = db.Categorias.ToList();
+
+                    bindingSourceCategorias.DataSource = listaCategoria;
+
+                    dgvCategoria.DataSource = bindingSourceCategorias;
+
+                    dgvCategoria.Refresh();
+                }
+
             }
 
+            txtId.Text = "";
+            txtNome.Text = "";
+            txtDescricao.Text = "";
+
         }
 
-        private void btnInserir_Click(object sender, EventArgs e)
+        private void btnAtualizar_Click(object sender, EventArgs e)
         {
-
-
-        }
-
-        private void btnAtualizar_Click(object sender, EventArgs e){
-            if (dgvCategoria.SelectedRows.Count > 0){
+            if (dgvCategoria.SelectedRows.Count > 0)
+            {
                 categoria = (dgvCategoria.SelectedRows[0].DataBoundItem as Categoria);
 
                 txtId.Text = categoria.Id.ToString();
-                cbNome.Text = categoria.Nome;
+                txtNome.Text = categoria.Nome;
                 txtDescricao.Text = categoria.Descricao;
 
                 EstaAtualizando = true;
 
             }
+        }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtDescricao_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

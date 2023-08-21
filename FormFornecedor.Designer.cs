@@ -37,7 +37,6 @@
             label4 = new Label();
             dgvFornecedor = new DataGridView();
             txtNome = new TextBox();
-            btnIncluir = new Button();
             label1 = new Label();
             txtEndereco = new TextBox();
             txtCNPJ = new TextBox();
@@ -55,7 +54,7 @@
             // 
             btnAtualizar.BackColor = Color.Transparent;
             btnAtualizar.ForeColor = SystemColors.ControlText;
-            btnAtualizar.Location = new Point(489, 416);
+            btnAtualizar.Location = new Point(570, 415);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 23);
             btnAtualizar.TabIndex = 23;
@@ -123,12 +122,14 @@
             // 
             // dgvFornecedor
             // 
+            dgvFornecedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFornecedor.Location = new Point(21, 222);
+            dgvFornecedor.Location = new Point(12, 222);
+            dgvFornecedor.MultiSelect = false;
             dgvFornecedor.Name = "dgvFornecedor";
             dgvFornecedor.RowTemplate.Height = 25;
             dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFornecedor.Size = new Size(769, 166);
+            dgvFornecedor.Size = new Size(795, 166);
             dgvFornecedor.TabIndex = 19;
             dgvFornecedor.CellContentClick += dgvFornecedor_CellContentClick;
             // 
@@ -139,18 +140,6 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(327, 23);
             txtNome.TabIndex = 18;
-            // 
-            // btnIncluir
-            // 
-            btnIncluir.BackColor = Color.Transparent;
-            btnIncluir.ForeColor = SystemColors.ControlText;
-            btnIncluir.Location = new Point(570, 415);
-            btnIncluir.Name = "btnIncluir";
-            btnIncluir.Size = new Size(75, 23);
-            btnIncluir.TabIndex = 20;
-            btnIncluir.Text = "Incluir";
-            btnIncluir.UseVisualStyleBackColor = false;
-            btnIncluir.Click += btnIncluir_Click;
             // 
             // label1
             // 
@@ -272,7 +261,6 @@
             Controls.Add(label4);
             Controls.Add(dgvFornecedor);
             Controls.Add(txtNome);
-            Controls.Add(btnIncluir);
             Name = "FormFornecedor";
             Text = "Fornecedores";
             Load += FormFornecedor_Load;
@@ -291,7 +279,6 @@
         private Label label4;
         private DataGridView dgvFornecedor;
         private TextBox txtNome;
-        private Button btnIncluir;
         private Label label1;
         private TextBox txtEndereco;
         private TextBox txtCNPJ;

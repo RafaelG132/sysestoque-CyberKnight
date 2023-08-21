@@ -78,16 +78,6 @@ namespace sysestoque_CyberKnight
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (EstaAtualizando)
-            {
-                //Pega o dado formulário e atualiza no banco de dados
-                EstaAtualizando = false;
-
-            }
-            else
-            {
-                //Pega o dado formulário e vai inserir no banco de dados
-            }
 
             fornecedor.Cnpj = txtCNPJ.Text;
             fornecedor.Nome = txtNome.Text;
@@ -97,21 +87,55 @@ namespace sysestoque_CyberKnight
             fornecedor.RazaoSocial = txtRazaoSocial.Text;
             fornecedor.Responsavel = txtResponsavel.Text;
 
-            using (var db = new EstoqueContext())
+            if (EstaAtualizando)
             {
-                db.Fornecedores.Add(fornecedor);
-                db.SaveChanges();
 
-                listaFornecedor = db.Fornecedores.ToList();
+                fornecedor.Cnpj = txtCNPJ.Text;
 
-                bindingSourceFornecedor.DataSource = listaFornecedor;
+                using (var db = new EstoqueContext())
+                {
+                    db.Fornecedores.Update(fornecedor);
+                    db.SaveChanges();
 
-                dgvFornecedor.DataSource = bindingSourceFornecedor;
+                    listaFornecedor = db.Fornecedores.ToList();
 
-                dgvFornecedor.Refresh();
+                    bindingSourceFornecedor.DataSource = listaFornecedor;
+
+                    dgvFornecedor.DataSource = bindingSourceFornecedor;
+
+                    dgvFornecedor.Refresh();
+
+                }
+
+                EstaAtualizando = false;
 
             }
+            else
+            {
 
+                using (var db = new EstoqueContext())
+                {
+                    db.Fornecedores.Add(fornecedor);
+                    db.SaveChanges();
+
+                    listaFornecedor = db.Fornecedores.ToList();
+
+                    bindingSourceFornecedor.DataSource = listaFornecedor;
+
+                    dgvFornecedor.DataSource = bindingSourceFornecedor;
+
+                    dgvFornecedor.Refresh();
+
+                }
+            }
+
+            txtCNPJ.Text = "";
+            txtNome.Text = "";
+            txtEndereco.Text = "";
+            txtTelefone.Text = "";
+            txtEmail.Text = "";
+            txtRazaoSocial.Text = "";
+            txtResponsavel.Text = "";
 
         }
 

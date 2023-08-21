@@ -36,7 +36,7 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Categoria", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -125,7 +125,7 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("ResponsavelEntradanome")
+                    b.Property<string>("ResponsavelEntradalogin")
                         .HasColumnType("varchar(255)");
 
                     b.Property<float>("ValorTotal")
@@ -136,7 +136,7 @@ namespace sysestoque_CyberKnight.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ResponsavelEntradanome");
+                    b.HasIndex("ResponsavelEntradalogin");
 
                     b.HasIndex("fornecedorCnpj");
 
@@ -224,7 +224,7 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Usuario", b =>
                 {
-                    b.Property<string>("nome")
+                    b.Property<string>("login")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("HashSenha")
@@ -235,7 +235,7 @@ namespace sysestoque_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("login")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -243,7 +243,7 @@ namespace sysestoque_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("nome");
+                    b.HasKey("login");
 
                     b.ToTable("Usuarios");
                 });
@@ -305,7 +305,7 @@ namespace sysestoque_CyberKnight.Migrations
                 {
                     b.HasOne("sysestoque_CyberKnight.Models.Usuario", "ResponsavelEntrada")
                         .WithMany()
-                        .HasForeignKey("ResponsavelEntradanome");
+                        .HasForeignKey("ResponsavelEntradalogin");
 
                     b.HasOne("sysestoque_CyberKnight.Models.Fornecedor", "fornecedor")
                         .WithMany("NFs")

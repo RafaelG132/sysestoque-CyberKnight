@@ -41,8 +41,7 @@
             btnExcluir = new Button();
             btnSalvar = new Button();
             btnAtualizar = new Button();
-            btnInserir = new Button();
-            cbNome = new ComboBox();
+            txtNome = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             SuspendLayout();
             // 
@@ -53,6 +52,7 @@
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(381, 23);
             txtDescricao.TabIndex = 5;
+            txtDescricao.TextChanged += txtDescricao_TextChanged;
             // 
             // label3
             // 
@@ -90,11 +90,14 @@
             // 
             // txtId
             // 
+            txtId.Enabled = false;
             txtId.Location = new Point(51, 28);
             txtId.MaxLength = 100;
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(95, 23);
             txtId.TabIndex = 1;
+            txtId.TextChanged += txtId_TextChanged;
             // 
             // dgvCategoria
             // 
@@ -166,25 +169,14 @@
             btnAtualizar.UseWaitCursor = true;
             btnAtualizar.Click += btnAtualizar_Click;
             // 
-            // btnInserir
+            // txtNome
             // 
-            btnInserir.BackColor = Color.Transparent;
-            btnInserir.ForeColor = SystemColors.ControlText;
-            btnInserir.Location = new Point(556, 422);
-            btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(75, 23);
-            btnInserir.TabIndex = 15;
-            btnInserir.Text = "Inserir";
-            btnInserir.UseVisualStyleBackColor = false;
-            btnInserir.Click += btnInserir_Click;
-            // 
-            // cbNome
-            // 
-            cbNome.FormattingEnabled = true;
-            cbNome.Location = new Point(61, 67);
-            cbNome.Name = "cbNome";
-            cbNome.Size = new Size(232, 23);
-            cbNome.TabIndex = 16;
+            txtNome.Location = new Point(79, 67);
+            txtNome.MaxLength = 100;
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(381, 23);
+            txtNome.TabIndex = 16;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // FormCadastroDeCategorias
             // 
@@ -194,8 +186,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(819, 455);
-            Controls.Add(cbNome);
-            Controls.Add(btnInserir);
+            Controls.Add(txtNome);
             Controls.Add(btnAtualizar);
             Controls.Add(btnSalvar);
             Controls.Add(btnExcluir);
@@ -228,7 +219,6 @@
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Descricao;
-        private Button btnInserir;
-        private ComboBox cbNome;
+        private TextBox txtNome;
     }
 }

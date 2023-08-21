@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace sysestoque_CyberKnight.Migrations
 {
     /// <inheritdoc />
-    public partial class v400 : Migration
+    public partial class v600 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -82,15 +82,15 @@ namespace sysestoque_CyberKnight.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    nome = table.Column<string>(type: "varchar(255)", nullable: false),
+                    login = table.Column<string>(type: "varchar(255)", nullable: false),
+                    nome = table.Column<string>(type: "longtext", nullable: false),
                     cpf = table.Column<string>(type: "longtext", nullable: false),
-                    login = table.Column<string>(type: "longtext", nullable: false),
                     HashSenha = table.Column<string>(type: "longtext", nullable: false),
                     telefone = table.Column<string>(type: "longtext", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.nome);
+                    table.PrimaryKey("PK_Usuarios", x => x.login);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -136,7 +136,7 @@ namespace sysestoque_CyberKnight.Migrations
                     DataEntrada = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ValorTotal = table.Column<float>(type: "float", nullable: false),
                     fornecedorCnpj = table.Column<string>(type: "varchar(255)", nullable: true),
-                    ResponsavelEntradanome = table.Column<string>(type: "varchar(255)", nullable: true)
+                    ResponsavelEntradalogin = table.Column<string>(type: "varchar(255)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -147,10 +147,10 @@ namespace sysestoque_CyberKnight.Migrations
                         principalTable: "Fornecedores",
                         principalColumn: "Cnpj");
                     table.ForeignKey(
-                        name: "FK_NotasEntrada_Usuarios_ResponsavelEntradanome",
-                        column: x => x.ResponsavelEntradanome,
+                        name: "FK_NotasEntrada_Usuarios_ResponsavelEntradalogin",
+                        column: x => x.ResponsavelEntradalogin,
                         principalTable: "Usuarios",
-                        principalColumn: "nome");
+                        principalColumn: "login");
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -252,9 +252,9 @@ namespace sysestoque_CyberKnight.Migrations
                 column: "fornecedorCnpj");
 
             migrationBuilder.CreateIndex(
-                name: "IX_NotasEntrada_ResponsavelEntradanome",
+                name: "IX_NotasEntrada_ResponsavelEntradalogin",
                 table: "NotasEntrada",
-                column: "ResponsavelEntradanome");
+                column: "ResponsavelEntradalogin");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_CategoriaId",
