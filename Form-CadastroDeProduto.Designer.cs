@@ -39,9 +39,9 @@
             lbl_qtd = new Label();
             lbl_descricao = new Label();
             lbl_precoUnt = new Label();
-            txtcategoria = new ComboBox();
+            cbxProdCategoria = new ComboBox();
             lbl_unidade = new Label();
-            txtunidade = new ComboBox();
+            cbxProdUnidMedida = new ComboBox();
             btn_atualizar = new Button();
             btn_excluir = new Button();
             btn_salvar = new Button();
@@ -151,13 +151,13 @@
             lbl_precoUnt.TabIndex = 11;
             lbl_precoUnt.Text = "Preço Unitário:";
             // 
-            // txtcategoria
+            // cbxProdCategoria
             // 
-            txtcategoria.FormattingEnabled = true;
-            txtcategoria.Location = new Point(187, 67);
-            txtcategoria.Name = "txtcategoria";
-            txtcategoria.Size = new Size(110, 23);
-            txtcategoria.TabIndex = 12;
+            cbxProdCategoria.FormattingEnabled = true;
+            cbxProdCategoria.Location = new Point(187, 67);
+            cbxProdCategoria.Name = "cbxProdCategoria";
+            cbxProdCategoria.Size = new Size(110, 23);
+            cbxProdCategoria.TabIndex = 12;
             // 
             // lbl_unidade
             // 
@@ -170,13 +170,13 @@
             lbl_unidade.TabIndex = 13;
             lbl_unidade.Text = "Unidade:";
             // 
-            // txtunidade
+            // cbxProdUnidMedida
             // 
-            txtunidade.FormattingEnabled = true;
-            txtunidade.Location = new Point(313, 115);
-            txtunidade.Name = "txtunidade";
-            txtunidade.Size = new Size(56, 23);
-            txtunidade.TabIndex = 14;
+            cbxProdUnidMedida.FormattingEnabled = true;
+            cbxProdUnidMedida.Location = new Point(313, 115);
+            cbxProdUnidMedida.Name = "cbxProdUnidMedida";
+            cbxProdUnidMedida.Size = new Size(56, 23);
+            cbxProdUnidMedida.TabIndex = 14;
             // 
             // btn_atualizar
             // 
@@ -291,9 +291,9 @@
             Controls.Add(btn_salvar);
             Controls.Add(btn_excluir);
             Controls.Add(btn_atualizar);
-            Controls.Add(txtunidade);
+            Controls.Add(cbxProdUnidMedida);
             Controls.Add(lbl_unidade);
-            Controls.Add(txtcategoria);
+            Controls.Add(cbxProdCategoria);
             Controls.Add(lbl_precoUnt);
             Controls.Add(lbl_descricao);
             Controls.Add(lbl_qtd);
@@ -309,6 +309,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro De Produtos";
             WindowState = FormWindowState.Maximized;
+            Load += Form_CadastroDeProduto_Load;
             ((System.ComponentModel.ISupportInitialize)dgv_Produto).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -325,9 +326,9 @@
         private Label lbl_qtd;
         private Label lbl_descricao;
         private Label lbl_precoUnt;
-        private ComboBox txtcategoria;
+        private ComboBox cbxProdCategoria;
         private Label lbl_unidade;
-        private ComboBox txtunidade;
+        private ComboBox cbxProdUnidMedida;
         private Button btn_atualizar;
         private Button btn_excluir;
         private Button btn_salvar;

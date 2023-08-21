@@ -1,4 +1,5 @@
-﻿using sysestoque_CyberKnight.Models;
+﻿
+using sysestoque_CyberKnight.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,10 +58,8 @@ namespace sysestoque_CyberKnight
 
         }
 
-        private void btnVerSenha_Click(object sender, EventArgs e)
-        {
+        private void btnVerSenha_Click(object sender, EventArgs e){
             txbSenha.UseSystemPasswordChar = !txbSenha.UseSystemPasswordChar;
-
         }
     }
 }

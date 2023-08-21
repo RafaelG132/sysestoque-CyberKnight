@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,20 +15,30 @@ namespace sysestoque_CyberKnight
     public partial class Form_CadastroDeProduto : Form
     {
 
-        ICollection<Produto> produtos = new List<Produto>();
         BindingSource bindingSourceProdutos = new BindingSource();
 
+        private bool EstaAtualizando = false;
+        public static ICollection<Fornecedor> ListaFornecedores = new List<Fornecedor>();
+        ICollection<Produto> produtos = new List<Produto>();
         Produto produto = new Produto();
 
-        private bool EstaAtualizando = false;
-
-        public Form_CadastroDeProduto()
-        {
+        public Form_CadastroDeProduto(){
 
             InitializeComponent();
+            
+            dgv_Produto.AutoGenerateColumns = false;
 
-            using (var db = new EstoqueContext())
-            {
+            using (var db = new EstoqueContext()){
+                cbxProdCategoria.DataSource = db.Categorias.ToList();
+                cbxProdCategoria.DisplayMember = "Name";
+                cbxProdCategoria.ValueMember = "Id";
+                cbxProdCategoria.SelectedIndex = -1;
+
+                cbxProdUnidMedida.DataSource = db.UnidadeMedida.ToList();
+                cbxProdUnidMedida.DisplayMember = "Name";
+                cbxProdUnidMedida.ValueMember = "Id";
+                cbxProdUnidMedida.SelectedIndex = -1;
+
                 produtos = db.Produtos.ToList();
 
                 bindingSourceProdutos.DataSource = produtos;
@@ -37,8 +48,7 @@ namespace sysestoque_CyberKnight
         }
 
 
-        private void btn_excluir_Click(object sender, EventArgs e)
-        {
+        private void btn_excluir_Click(object sender, EventArgs e){
 
             if (dgv_Produto.SelectedRows.Count > 0)
             {
@@ -51,10 +61,6 @@ namespace sysestoque_CyberKnight
                 {
                     db.Produtos.Remove(produto);
                     db.SaveChanges();
-
-
-
-
                 }
             }
         }
@@ -72,7 +78,7 @@ namespace sysestoque_CyberKnight
             else
             {
                 produto.id = null;
-                produto.categoria = txtcategoria.Text;
+                produto.categoria = cbxProdCategoria.Text;
                 produto.estoque = txtqtd.Text;
                 produto.descricao = txtdescricao.Text;
                 produto.precounit = txtprecounit.Text;
@@ -95,20 +101,19 @@ namespace sysestoque_CyberKnight
                 }
             }
 
-
-
-
-
-
         }
 
         private void btn_atualizar_Click(object sender, EventArgs e)
         {
-            if (dgv_Produto.SelectedRows.Count > 0){
+            if (dgv_Produto.SelectedRows.Count > 0)
+            {
                 produto = dgv_Produto.SelectedRows[0].DataBoundItem as Produto;
-
-                
             }
+        }
+
+        private void Form_CadastroDeProduto_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
