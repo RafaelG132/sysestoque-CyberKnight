@@ -14,11 +14,8 @@ namespace sysestoque_CyberKnight.Models
 
         //public DbSet<NotaEntrada> NotaEntradas { get; set; }
 
-        protected override void
-            OnConfiguring(DbContextOptionsBuilder options){
-            options.UseMySQL("Server=127.0.0.1;port=3306;database=estoque;uid=root;password=#Root2022");
-
-
+        protected override void OnConfiguring(DbContextOptionsBuilder options){
+            options.UseMySQL("Server=192.168.30.68;port=3306;database=estoque_cyberknigth;uid=user_estoque;password=#Root2022");
         }
 
     }
