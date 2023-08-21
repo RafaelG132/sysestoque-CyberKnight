@@ -45,15 +45,23 @@
             txbSenha = new TextBox();
             txbTelefone = new TextBox();
             txbCpf = new TextBox();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            msgBarraStatus = new ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvUsuario
             // 
+            dgvUsuario.AllowUserToAddRows = false;
+            dgvUsuario.AllowUserToDeleteRows = false;
             dgvUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsuario.Location = new Point(12, 187);
+            dgvUsuario.MultiSelect = false;
             dgvUsuario.Name = "dgvUsuario";
+            dgvUsuario.ReadOnly = true;
             dgvUsuario.RowTemplate.Height = 25;
             dgvUsuario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUsuario.Size = new Size(776, 206);
@@ -97,6 +105,7 @@
             txbLogin.Name = "txbLogin";
             txbLogin.Size = new Size(175, 23);
             txbLogin.TabIndex = 3;
+            txbLogin.TextChanged += txbLogin_TextChanged;
             // 
             // textBox2
             // 
@@ -190,12 +199,34 @@
             txbCpf.Size = new Size(100, 23);
             txbCpf.TabIndex = 3;
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, msgBarraStatus });
+            statusStrip1.Location = new Point(0, 465);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(853, 22);
+            statusStrip1.TabIndex = 5;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(69, 17);
+            toolStripStatusLabel1.Text = "Mensagem:";
+            // 
+            // msgBarraStatus
+            // 
+            msgBarraStatus.AutoSize = false;
+            msgBarraStatus.Name = "msgBarraStatus";
+            msgBarraStatus.Size = new Size(400, 17);
+            // 
             // FormUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(853, 450);
+            ClientSize = new Size(853, 487);
+            Controls.Add(statusStrip1);
             Controls.Add(btnSalvar);
             Controls.Add(btnAtualizar);
             Controls.Add(btnExcluir);
@@ -216,6 +247,8 @@
             Text = "FormUsuario";
             Load += FormUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -238,5 +271,8 @@
         private TextBox txbSenha;
         private TextBox txbTelefone;
         private TextBox txbCpf;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel msgBarraStatus;
     }
 }

@@ -27,7 +27,7 @@ namespace sysestoque_CyberKnight
             {
 
                 usuarios = db.Usuarios.ToList();
-                bindingSourceUsuarios.DataSource = usuarios;
+                bindingSourceUsuarios.DataSource = usuario;
                 dgvUsuario.DataSource = bindingSourceUsuarios;
             }
 
@@ -71,20 +71,55 @@ namespace sysestoque_CyberKnight
             }
         }
 
-        private void btnSalvar_Click(object sender, EventArgs e){
+        private bool validarCampos()
+        {
+            bool estaValidado = true;
+            //CPF
+            if (txbCpf.Text == "")
+            {
+                txbCpf.BackColor = Color.Red;
 
-            if (EstaAtualizando) {
-                //Pegar o dado formulario e atualiza no banco de dados
-                EstaAtualizando = false;
+                estaValidado = false;
+            }
+            //Nome
+            if (txbNome.Text == "")
+            {
+                txbNome.BackColor = Color.Red;
 
+                estaValidado = false;
+            }
+            //Login
+            if (txbLogin.Text == "")
+            {
+                txbLogin.BackColor = Color.Red;
 
-            } else{
-                //Pegar o dado fromulario e vai inserir no banco de  dados
-            } 
+                estaValidado = false;
+            }
+            //Senha
+            if (txbSenha.Text == "")
+            {
+                txbSenha.BackColor = Color.Red;
 
+                estaValidado = false;
+            }
+            //Telefone
+            if (txbTelefone.Text == "")
+            {
+                txbTelefone.BackColor = Color.Red;
 
+                estaValidado = false;
+            }
 
+            return estaValidado;
+        }
 
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+
+            if (!this.validarCampos())
+            {
+                return;
+            }
 
             usuario.cpf = txbCpf.Text;
             usuario.nome = txbNome.Text;
@@ -92,21 +127,63 @@ namespace sysestoque_CyberKnight
             usuario.HashSenha = txbSenha.Text;
             usuario.telefone = txbTelefone.Text;
 
-            using (var db = new EstoqueContext())
+            if (EstaAtualizando)
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
 
-                usuarios = db.Usuarios.ToList();
-                bindingSourceUsuarios.DataSource = usuarios;
-                dgvUsuario.DataSource = bindingSourceUsuarios;
-                dgvUsuario.Refresh();
+                usuario.login = txbLogin.Text;
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Usuarios.Update(usuario);
+                    db.SaveChanges();
+
+                    usuarios = db.Usuarios.ToList();
+                    bindingSourceUsuarios.DataSource = usuarios;
+                    dgvUsuario.DataSource = bindingSourceUsuarios;
+                    dgvUsuario.Refresh();
+
+                }
+
+                EstaAtualizando = false;
+
 
             }
+            else
+            {
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
+
+                    usuarios = db.Usuarios.ToList();
+                    bindingSourceUsuarios.DataSource = usuarios;
+                    dgvUsuario.DataSource = bindingSourceUsuarios;
+                    dgvUsuario.Refresh();
+
+                }
+            }
+
+            usuario.cpf = "";
+            usuario.nome = "";
+            usuario.login = "";
+            usuario.HashSenha = "";
+            usuario.telefone = "";
+
+            txbCpf.Text = "";
+            txbNome.Text = "";
+            txbLogin.Text = "";
+            txbSenha.Text = "";
+            txbTelefone.Text = "";
+
+
+
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e){
-            if (dgvUsuario.SelectedRows.Count > 0) {
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            if (dgvUsuario.SelectedRows.Count > 0)
+            {
 
                 usuario = dgvUsuario.SelectedRows[0].DataBoundItem as Usuario;
 
@@ -115,8 +192,17 @@ namespace sysestoque_CyberKnight
                 txbLogin.Text = usuario.login;
                 txbTelefone.Text = usuario.telefone;
 
-                EstaAtualizando = true; 
+                EstaAtualizando = true;
             }
+            else{
+                msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
+                msgBarraStatus.ForeColor = Color.Red;
+            }
+        }
+
+        private void txbLogin_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
