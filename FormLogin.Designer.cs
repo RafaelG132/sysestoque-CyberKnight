@@ -97,10 +97,11 @@ namespace sysestoque_CyberKnight
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Leelawadee", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ControlLightLight;
-            label5.Location = new Point(2, 543);
+            label5.Location = new Point(1, 543);
             label5.Name = "label5";
             label5.Size = new Size(363, 15);
             label5.TabIndex = 9;
@@ -108,6 +109,7 @@ namespace sysestoque_CyberKnight
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Leelawadee", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ButtonFace;
@@ -183,6 +185,7 @@ namespace sysestoque_CyberKnight
             Controls.Add(txbSenha);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Form_Login";
             Text = "Tela de Login";
             Load += Form_Login_Load;

@@ -75,7 +75,10 @@ namespace sysestoque_CyberKnight
 
 
         private void btnLogar_Click(object sender, EventArgs e)
-        {
+        { 
+
+            this.Cursor = Cursors.WaitCursor;
+
             string senha = txbSenha.Text;
             string login = txtlogin.Text;
 
@@ -112,6 +115,7 @@ namespace sysestoque_CyberKnight
                 else
                 {
 
+
                     MessageBox.Show("Senha incorreta");
                 }
 
@@ -121,7 +125,7 @@ namespace sysestoque_CyberKnight
                 MessageBox.Show("Acesso negado");
             }
 
-
+            this.Cursor = Cursors.WaitCursor;
 
 
         }
