@@ -55,6 +55,9 @@ namespace sysestoque_CyberKnight
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
+
             if (dgvUsuario.SelectedRows.Count > 0)
             {
                 usuario = (dgvUsuario.SelectedRows[0].DataBoundItem as Usuario);
@@ -68,7 +71,13 @@ namespace sysestoque_CyberKnight
                     db.Usuarios.Remove(usuario);
                     db.SaveChanges();
                 }
-            }
+            }else{
+                msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
+                msgBarraStatus.ForeColor = Color.Red;
+
+            } 
+
+            this.Cursor = Cursors.Default;
         }
 
         private bool validarCampos()
@@ -110,11 +119,29 @@ namespace sysestoque_CyberKnight
                 estaValidado = false;
             }
 
+            RestaurarDadosTxb();
+
             return estaValidado;
+        }
+
+
+        private void RestaurarDadosTxb(){
+            Task.Delay(5000).ContinueWith((task) =>{
+                msgBarraStatus.Text = "";
+                /*
+                txbNome.BackColor = Color.White;
+                txbLogin.BackColor = Color.White;
+                txbCpf.BackColor = Color.White;
+                txbSenha.BackColor = Color.White;
+                txbTelefone.BackColor = Color.White;
+                */
+            });
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
 
             if (!this.validarCampos())
             {
@@ -177,6 +204,9 @@ namespace sysestoque_CyberKnight
             txbTelefone.Text = "";
 
 
+            this.Cursor = Cursors.Default;
+
+
 
         }
 
@@ -197,6 +227,8 @@ namespace sysestoque_CyberKnight
             else{
                 msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
                 msgBarraStatus.ForeColor = Color.Red;
+
+                RestaurarDadosTxb();
             }
         }
 
