@@ -15,6 +15,7 @@ namespace sysestoque_CyberKnight
     public partial class Form_CadastroDeProduto : Form
     {
 
+
         BindingSource bindingSourceProdutos = new BindingSource();
 
         private bool EstaAtualizando = false;
@@ -22,13 +23,16 @@ namespace sysestoque_CyberKnight
         ICollection<Produto> produtos = new List<Produto>();
         Produto produto = new Produto();
 
-        public Form_CadastroDeProduto(){
+        public Form_CadastroDeProduto()
+        {
+
 
             InitializeComponent();
-            
+
             dgv_Produto.AutoGenerateColumns = false;
 
-            using (var db = new EstoqueContext()){
+            using (var db = new EstoqueContext())
+            {
                 cbxProdCategoria.DataSource = db.Categorias.ToList();
                 cbxProdCategoria.DisplayMember = "Name";
                 cbxProdCategoria.ValueMember = "Id";
@@ -48,7 +52,9 @@ namespace sysestoque_CyberKnight
         }
 
 
-        private void btn_excluir_Click(object sender, EventArgs e){
+        private void btn_excluir_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
 
             if (dgv_Produto.SelectedRows.Count > 0)
             {
@@ -61,6 +67,9 @@ namespace sysestoque_CyberKnight
                 {
                     db.Produtos.Remove(produto);
                     db.SaveChanges();
+
+
+                    this.Cursor = Cursors.Default;
                 }
             }
         }
@@ -71,6 +80,8 @@ namespace sysestoque_CyberKnight
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             if (EstaAtualizando)
             {
 
@@ -98,6 +109,7 @@ namespace sysestoque_CyberKnight
                     dgv_Produto.DataSource = bindingSourceProdutos;
                     dgv_Produto.Refresh();
 
+                    this.Cursor = Cursors.Default;
                 }
             }
 
@@ -105,16 +117,21 @@ namespace sysestoque_CyberKnight
 
         private void btn_atualizar_Click(object sender, EventArgs e)
         {
+
             if (dgv_Produto.SelectedRows.Count > 0)
             {
                 produto = dgv_Produto.SelectedRows[0].DataBoundItem as Produto;
             }
         }
 
-        private void Form_CadastroDeProduto_Load(object sender, EventArgs e)
+        private void dgv_Produto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
         }
     }
-
 }
+
+
+
+
+

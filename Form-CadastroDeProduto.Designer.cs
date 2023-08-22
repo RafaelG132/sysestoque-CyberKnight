@@ -52,6 +52,7 @@
             txtestoquemedio = new TextBox();
             txtestoqueMin = new TextBox();
             txtestoquemax = new TextBox();
+            ID = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgv_Produto).BeginInit();
             SuspendLayout();
             // 
@@ -214,11 +215,13 @@
             // dgv_Produto
             // 
             dgv_Produto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Produto.Location = new Point(43, 255);
+            dgv_Produto.Columns.AddRange(new DataGridViewColumn[] { ID });
+            dgv_Produto.Location = new Point(30, 255);
             dgv_Produto.Name = "dgv_Produto";
             dgv_Produto.RowTemplate.Height = 25;
-            dgv_Produto.Size = new Size(648, 166);
+            dgv_Produto.Size = new Size(661, 166);
             dgv_Produto.TabIndex = 19;
+            dgv_Produto.CellFormatting += dgv_Produto_CellFormatting;
             // 
             // label2
             // 
@@ -275,6 +278,12 @@
             txtestoquemax.Size = new Size(100, 23);
             txtestoquemax.TabIndex = 25;
             // 
+            // ID
+            // 
+            ID.DataPropertyName = "id";
+            ID.HeaderText = "ID";
+            ID.Name = "ID";
+            // 
             // Form_CadastroDeProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -309,7 +318,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro De Produtos";
             WindowState = FormWindowState.Maximized;
-            Load += Form_CadastroDeProduto_Load;
             ((System.ComponentModel.ISupportInitialize)dgv_Produto).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -340,5 +348,6 @@
         private TextBox txtestoquemedio;
         private TextBox txtestoqueMin;
         private TextBox txtestoquemax;
+        private DataGridViewTextBoxColumn ID;
     }
 }
