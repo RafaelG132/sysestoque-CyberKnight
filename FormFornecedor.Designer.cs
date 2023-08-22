@@ -52,6 +52,7 @@
             // 
             // btnAtualizar
             // 
+            btnAtualizar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAtualizar.BackColor = Color.Transparent;
             btnAtualizar.ForeColor = SystemColors.ControlText;
             btnAtualizar.Location = new Point(570, 415);
@@ -60,11 +61,11 @@
             btnAtualizar.TabIndex = 23;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
-            btnAtualizar.UseWaitCursor = true;
             btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnSalvar
             // 
+            btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.BackColor = Color.Transparent;
             btnSalvar.BackgroundImageLayout = ImageLayout.None;
             btnSalvar.Cursor = Cursors.Hand;
@@ -79,6 +80,7 @@
             // 
             // btnExcluir
             // 
+            btnExcluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnExcluir.BackColor = Color.Transparent;
             btnExcluir.ForeColor = SystemColors.ControlText;
             btnExcluir.Location = new Point(651, 415);
@@ -122,11 +124,16 @@
             // 
             // dgvFornecedor
             // 
+            dgvFornecedor.AllowUserToAddRows = false;
+            dgvFornecedor.AllowUserToDeleteRows = false;
+            dgvFornecedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvFornecedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvFornecedor.BackgroundColor = SystemColors.Control;
             dgvFornecedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFornecedor.Location = new Point(12, 222);
             dgvFornecedor.MultiSelect = false;
             dgvFornecedor.Name = "dgvFornecedor";
+            dgvFornecedor.ReadOnly = true;
             dgvFornecedor.RowTemplate.Height = 25;
             dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFornecedor.Size = new Size(795, 166);

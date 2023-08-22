@@ -101,37 +101,47 @@
             // 
             // dgvCategoria
             // 
+            dgvCategoria.AllowUserToAddRows = false;
+            dgvCategoria.AllowUserToDeleteRows = false;
+            dgvCategoria.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvCategoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCategoria.BackgroundColor = SystemColors.Control;
             dgvCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCategoria.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, Descricao });
             dgvCategoria.Location = new Point(24, 198);
             dgvCategoria.MultiSelect = false;
             dgvCategoria.Name = "dgvCategoria";
+            dgvCategoria.ReadOnly = true;
             dgvCategoria.RowTemplate.Height = 25;
             dgvCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCategoria.Size = new Size(769, 195);
             dgvCategoria.TabIndex = 9;
+            dgvCategoria.CellContentClick += dgvCategoria_CellContentClick;
             // 
             // Id
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "Id";
             Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
             // Nome
             // 
             Nome.DataPropertyName = "Nome";
             Nome.HeaderText = "Nome";
             Nome.Name = "Nome";
+            Nome.ReadOnly = true;
             // 
             // Descricao
             // 
             Descricao.DataPropertyName = "Descricao";
             Descricao.HeaderText = "Descrição";
             Descricao.Name = "Descricao";
+            Descricao.ReadOnly = true;
             // 
             // btnExcluir
             // 
+            btnExcluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnExcluir.BackColor = Color.Transparent;
             btnExcluir.ForeColor = SystemColors.ControlText;
             btnExcluir.Location = new Point(637, 422);
@@ -144,6 +154,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSalvar.BackColor = Color.Transparent;
             btnSalvar.BackgroundImageLayout = ImageLayout.None;
             btnSalvar.Cursor = Cursors.Hand;
@@ -158,6 +169,7 @@
             // 
             // btnAtualizar
             // 
+            btnAtualizar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAtualizar.BackColor = Color.Transparent;
             btnAtualizar.ForeColor = SystemColors.ControlText;
             btnAtualizar.Location = new Point(718, 422);
@@ -166,7 +178,6 @@
             btnAtualizar.TabIndex = 14;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
-            btnAtualizar.UseWaitCursor = true;
             btnAtualizar.Click += btnAtualizar_Click;
             // 
             // txtNome

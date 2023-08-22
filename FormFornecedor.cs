@@ -56,13 +56,14 @@ namespace sysestoque_CyberKnight
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
+
             if (dgvFornecedor.SelectedRows.Count > 0)
             {
 
                 fornecedor = (dgvFornecedor.SelectedRows[0].DataBoundItem as Fornecedor);
 
-                //Remove a categoria do DataGridView
-                bindingSourceFornecedor.Remove(listaFornecedor);
 
                 //Remove do Banco de Dados
                 using (var db = new EstoqueContext())
@@ -70,14 +71,22 @@ namespace sysestoque_CyberKnight
                     db.Fornecedores.Remove(fornecedor);
                     db.SaveChanges();
 
+                    //Remove a categoria do DataGridView
+                    listaFornecedor = db.Fornecedores.ToList();
+                    bindingSourceFornecedor.DataSource = listaFornecedor;
+                    dgvFornecedor.DataSource = bindingSourceFornecedor;
                 }
 
             }
 
+            this.Cursor = Cursors.Default;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+
+            this.Cursor = Cursors.WaitCursor;
+
 
             fornecedor.Cnpj = txtCNPJ.Text;
             fornecedor.Nome = txtNome.Text;
@@ -136,6 +145,8 @@ namespace sysestoque_CyberKnight
             txtEmail.Text = "";
             txtRazaoSocial.Text = "";
             txtResponsavel.Text = "";
+
+            this.Cursor = Cursors.Default;
 
         }
 

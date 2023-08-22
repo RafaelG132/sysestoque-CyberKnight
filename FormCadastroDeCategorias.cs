@@ -56,6 +56,8 @@ namespace sysestoque_CyberKnight
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
 
             if (dgvCategoria.SelectedRows.Count > 0)
             {
@@ -71,14 +73,21 @@ namespace sysestoque_CyberKnight
                     db.Categorias.Remove(categoria);
                     db.SaveChanges();
 
+
+
                 }
 
             }
+
+            this.Cursor = Cursors.Default;
 
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
+
             categoria.Id = null;
             categoria.Nome = txtNome.Text;
             categoria.Descricao = txtDescricao.Text;
@@ -129,10 +138,14 @@ namespace sysestoque_CyberKnight
             txtNome.Text = "";
             txtDescricao.Text = "";
 
+            this.Cursor = Cursors.Default;
+
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
+
+
             if (dgvCategoria.SelectedRows.Count > 0)
             {
                 categoria = (dgvCategoria.SelectedRows[0].DataBoundItem as Categoria);
@@ -148,17 +161,27 @@ namespace sysestoque_CyberKnight
 
         private void txtId_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtDescricao_TextChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void dgvCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
