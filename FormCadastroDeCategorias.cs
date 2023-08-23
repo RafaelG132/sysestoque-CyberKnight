@@ -58,6 +58,12 @@ namespace sysestoque_CyberKnight
         {
             this.Cursor = Cursors.WaitCursor;
 
+            var result = MessageBox.Show("Você realmente deseja excluir essa informação?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+
+            }
+
 
             if (dgvCategoria.SelectedRows.Count > 0)
             {
@@ -83,10 +89,50 @@ namespace sysestoque_CyberKnight
 
         }
 
+        private bool ValidarCampos(){
+
+            bool estaValido = true;
+
+            //Nome
+            if (txtNome.Text == "")
+            {
+                txtNome.BackColor = Color.Red;
+
+                estaValido = false;
+            }
+            //Descrição
+            if (txtDescricao.Text == "")
+            {
+                txtDescricao.BackColor = Color.Red;
+                estaValido = false;
+            }
+
+            RestaurarDadosTxt();
+
+            return estaValido;
+        }
+
+        private void RestaurarDadosTxt()
+        {
+            Task.Delay(5000).ContinueWith((Task) =>
+            {
+                //msgBarraStatus.Text = "";
+
+                txtNome.BackColor= Color.White;
+                txtDescricao.BackColor = Color.White;
+            });
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            try
+            {
+
             this.Cursor = Cursors.WaitCursor;
 
+            if (!this.ValidarCampos()){
+                return;
+            }
 
             categoria.Id = null;
             categoria.Nome = txtNome.Text;
@@ -140,6 +186,10 @@ namespace sysestoque_CyberKnight
 
             this.Cursor = Cursors.Default;
 
+
+            }catch (Exception erro) {
+                MessageBox.Show(erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -156,6 +206,13 @@ namespace sysestoque_CyberKnight
 
                 EstaAtualizando = true;
 
+            }
+            else
+            {
+                msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
+                msgBarraStatus.ForeColor = Color.Red;
+
+                RestaurarDadosTxt();
             }
         }
 

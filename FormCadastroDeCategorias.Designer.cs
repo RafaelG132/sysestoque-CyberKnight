@@ -231,5 +231,6 @@
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Descricao;
         private TextBox txtNome;
+        private ToolStripStatusLabel msgBarraStatus;
     }
 }

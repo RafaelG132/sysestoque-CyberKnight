@@ -58,6 +58,12 @@ namespace sysestoque_CyberKnight
         {
             this.Cursor = Cursors.WaitCursor;
 
+            var result = MessageBox.Show("Você realmente deseja excluir essa informação?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+
+            }
+
 
             if (dgvFornecedor.SelectedRows.Count > 0)
             {
