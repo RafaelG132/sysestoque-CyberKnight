@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace sysestoque_CyberKnight
 {
@@ -38,24 +39,22 @@ namespace sysestoque_CyberKnight
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
+
+            var result = MessageBox.Show("Voçê realmente deseja excluir esse item?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes){
+
+            }
 
 
             if (dgvUsuario.SelectedRows.Count > 0)
@@ -119,25 +118,29 @@ namespace sysestoque_CyberKnight
                 estaValidado = false;
             }
 
-            RestaurarDadosTxb();
+            RestaurarEstiloTxb();
 
             return estaValidado;
         }
 
+        private async Task<bool> RestaurarEstiloTxb()
+        {
+            // Seta um delay em milisegundos			
+            await Task.Delay(5000);
 
-        private void RestaurarDadosTxb(){
-            Task.Delay(5000).ContinueWith((task) =>{
-                msgBarraStatus.Text = "";
-                /*
-                txbNome.BackColor = Color.White;
-                txbLogin.BackColor = Color.White;
-                txbCpf.BackColor = Color.White;
-                txbSenha.BackColor = Color.White;
-                txbTelefone.BackColor = Color.White;
-                */
-            });
+            //Executa o precesso de restauração de
+            //estado padrão dos campos
+            msgBarraStatus.Text = "";
+
+            txbNome.BackColor = Color.White;
+            txbLogin.BackColor = Color.White;
+            txbCpf.BackColor = Color.White;
+            txbSenha.BackColor = Color.White;
+            txbTelefone.BackColor = Color.White;
+
+            // Retorna o valro boleano
+            return true;
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -148,10 +151,19 @@ namespace sysestoque_CyberKnight
                 return;
             }
 
+            StringBuilder sb = new StringBuilder(); {
+
+                using (SHA512 sha512 =sha512.create)) {
+                    byte[] hashValue = sha512.ComputeHash(Encoding.UTF8.GetBytes(senha))
+
+                }
+            }
+
+            usuario.HashSenha = txbSenha.Text;
+
             usuario.cpf = txbCpf.Text;
             usuario.nome = txbNome.Text;
             usuario.login = txbLogin.Text;
-            usuario.HashSenha = txbSenha.Text;
             usuario.telefone = txbTelefone.Text;
 
             if (EstaAtualizando)
@@ -228,7 +240,7 @@ namespace sysestoque_CyberKnight
                 msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
                 msgBarraStatus.ForeColor = Color.Red;
 
-                RestaurarDadosTxb();
+                RestaurarEstiloTxb();
             }
         }
 
