@@ -72,6 +72,7 @@ namespace sysestoque_CyberKnight
             txtlogin.Name = "txtlogin";
             txtlogin.Size = new Size(412, 25);
             txtlogin.TabIndex = 5;
+            txtlogin.Text = "root";
             // 
             // label2
             // 

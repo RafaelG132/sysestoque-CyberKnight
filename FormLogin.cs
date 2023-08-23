@@ -19,6 +19,7 @@ namespace sysestoque_CyberKnight
     {
         Usuario usuario = null;
 
+
         public Form_Login()
         {
             InitializeComponent();
@@ -75,18 +76,15 @@ namespace sysestoque_CyberKnight
 
 
         private void btnLogar_Click(object sender, EventArgs e)
-        { 
+        {
 
-            this.Cursor = Cursors.WaitCursor;
+            this.Cursor = Cursors.AppStarting;
 
-            string senha = txbSenha.Text;
+            string HashSenha = txbSenha.Text;
             string login = txtlogin.Text;
 
-            using (var db = new EstoqueContext())
-            {
-
-                usuario = db.Usuarios.FirstOrDefault(x => x.HashSenha == senha);
-
+            using (var db = new EstoqueContext()){
+                usuario = db.Usuarios.FirstOrDefault(x => x.HashSenha == HashSenha);
             }
 
             if (usuario != null)
@@ -97,7 +95,7 @@ namespace sysestoque_CyberKnight
                 using (SHA512 sha512 = SHA512.Create())
                 {
 
-                    byte[] hashvalue = sha512.ComputeHash(Encoding.UTF8.GetBytes(senha));
+                    byte[] hashvalue = sha512.ComputeHash(Encoding.UTF8.GetBytes(HashSenha));
                     foreach (byte b in hashvalue)
                     {
                         sb.Append($"({b:x2})");
@@ -105,29 +103,35 @@ namespace sysestoque_CyberKnight
                     }
                 }
 
-                senha = sb.ToString();
+                HashSenha = sb.ToString();
 
-                if (usuario.HashSenha == senha)
+                if (usuario.HashSenha == HashSenha)
                 {
+                    /*
+                    this.Hide();
 
+                    FormMain formMain = new FormMain();
+                    formMain.Show();
+                    */
                     MessageBox.Show("Sucesso");
                 }
                 else
                 {
-
-
-                    MessageBox.Show("Senha incorreta");
+                    MessageBox.Show("Login ou Senha incorreta");
                 }
 
             }
             else
             {
-                MessageBox.Show("Acesso negado");
+                var result = MessageBox.Show(
+                    "Acesso negado ao usuário, tente novamente",
+                    "Acesso negado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Hand
+                 );
             }
 
-            this.Cursor = Cursors.WaitCursor;
-
-
+            this.Cursor = Cursors.Default;
         }
     }
 }
