@@ -1,4 +1,6 @@
-﻿using sysestoque_CyberKnight.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_CyberKnight.Models;
+using sysestoque_CyberKnight.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +45,10 @@ namespace sysestoque_CyberKnight
                 cbxProdUnidMedida.ValueMember = "Id";
                 cbxProdUnidMedida.SelectedIndex = -1;
 
-                produtos = db.Produtos.ToList();
+                produtos = db.Produtos
+                .Include(i => i.categoria)
+                .Include(i => i.UnidadeMedida)
+                .ToList();
 
                 bindingSourceProdutos.DataSource = produtos;
 
@@ -89,7 +94,7 @@ namespace sysestoque_CyberKnight
             else
             {
                 produto.id = null;
-                produto.categoria = cbxProdCategoria.Text;
+                produto.CategoriaId = (int)cbxProdCategoria.SelectedValue;
                 produto.estoque = txtqtd.Text;
                 produto.descricao = txtdescricao.Text;
                 produto.precounit = txtprecounit.Text;
@@ -126,6 +131,21 @@ namespace sysestoque_CyberKnight
 
         private void dgv_Produto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (
+                (dgv_Produto.Rows[e.RowIndex].DataBoundItem != null) &&
+                (dgv_Produto.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+                )
+            {
+
+                e.Value = BindProperty.resolve(
+                            dgv_Produto.Rows[e.RowIndex].DataBoundItem,
+                            dgv_Produto.Columns[e.ColumnIndex].DataPropertyName
+                        );
+            }
+        }
+        private void dgv_Produto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
 
         }
     }

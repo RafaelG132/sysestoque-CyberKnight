@@ -23,7 +23,7 @@ namespace sysestoque_CyberKnight.Models
 
         [ForeignKey(nameof(categoria))]
         public int CategoriaId { get; set; } 
-        public string categoria { get; set; }
+        public Categoria? categoria { get; set; }
 
 
         [ForeignKey(nameof(UnidadeMedida))]
