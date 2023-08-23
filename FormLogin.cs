@@ -83,8 +83,9 @@ namespace sysestoque_CyberKnight
             string HashSenha = txbSenha.Text;
             string login = txtlogin.Text;
 
-            using (var db = new EstoqueContext()){
-                usuario = db.Usuarios.FirstOrDefault(x => x.HashSenha == HashSenha);
+            using (var db = new EstoqueContext())
+            {
+                usuario = db.Usuarios.FirstOrDefault(x => x.login == login);
             }
 
             if (usuario != null)
@@ -132,6 +133,11 @@ namespace sysestoque_CyberKnight
             }
 
             this.Cursor = Cursors.Default;
+        }
+
+        private void txtlogin_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
