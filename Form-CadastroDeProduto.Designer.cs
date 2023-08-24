@@ -46,8 +46,13 @@
             btn_excluir = new Button();
             btn_salvar = new Button();
             dgv_Produto = new DataGridView();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            txtestoquemedio = new TextBox();
+            txtestoqueMin = new TextBox();
+            txtestoquemax = new TextBox();
             ID = new DataGridViewTextBoxColumn();
-            IdCategoria = new DataGridViewTextBoxColumn();
             Categoria = new DataGridViewTextBoxColumn();
             Qtd_Estoque = new DataGridViewTextBoxColumn();
             Preço_Unitario = new DataGridViewTextBoxColumn();
@@ -55,14 +60,7 @@
             estoquemax = new DataGridViewTextBoxColumn();
             estoquemedio = new DataGridViewTextBoxColumn();
             estoquemin = new DataGridViewTextBoxColumn();
-            UnidadeMedidaID = new DataGridViewTextBoxColumn();
             UnidadeMedida = new DataGridViewTextBoxColumn();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            txtestoquemedio = new TextBox();
-            txtestoqueMin = new TextBox();
-            txtestoquemax = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgv_Produto).BeginInit();
             SuspendLayout();
             // 
@@ -229,7 +227,7 @@
             // 
             dgv_Produto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_Produto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Produto.Columns.AddRange(new DataGridViewColumn[] { ID, IdCategoria, Categoria, Qtd_Estoque, Preço_Unitario, Descrição, estoquemax, estoquemedio, estoquemin, UnidadeMedidaID, UnidadeMedida });
+            dgv_Produto.Columns.AddRange(new DataGridViewColumn[] { ID, Categoria, Qtd_Estoque, Preço_Unitario, Descrição, estoquemax, estoquemedio, estoquemin, UnidadeMedida });
             dgv_Produto.Location = new Point(30, 255);
             dgv_Produto.Name = "dgv_Produto";
             dgv_Produto.RowTemplate.Height = 25;
@@ -237,72 +235,6 @@
             dgv_Produto.TabIndex = 19;
             dgv_Produto.CellContentClick += dgv_Produto_CellContentClick;
             dgv_Produto.CellFormatting += dgv_Produto_CellFormatting;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "id";
-            ID.HeaderText = "ID";
-            ID.Name = "ID";
-            // 
-            // IdCategoria
-            // 
-            IdCategoria.DataPropertyName = "CategoriaId";
-            IdCategoria.HeaderText = "Id_Categoria";
-            IdCategoria.Name = "IdCategoria";
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            // 
-            // Qtd_Estoque
-            // 
-            Qtd_Estoque.DataPropertyName = "estoque";
-            Qtd_Estoque.HeaderText = "Qtd_Estoque";
-            Qtd_Estoque.Name = "Qtd_Estoque";
-            // 
-            // Preço_Unitario
-            // 
-            Preço_Unitario.DataPropertyName = "precounit";
-            Preço_Unitario.HeaderText = "Preço_unitário";
-            Preço_Unitario.Name = "Preço_Unitario";
-            // 
-            // Descrição
-            // 
-            Descrição.DataPropertyName = "descricao";
-            Descrição.HeaderText = "Descrição";
-            Descrição.Name = "Descrição";
-            // 
-            // estoquemax
-            // 
-            estoquemax.DataPropertyName = "estoquemax";
-            estoquemax.HeaderText = "estoquemax";
-            estoquemax.Name = "estoquemax";
-            // 
-            // estoquemedio
-            // 
-            estoquemedio.DataPropertyName = "estoquemedio";
-            estoquemedio.HeaderText = "estoquemedio";
-            estoquemedio.Name = "estoquemedio";
-            // 
-            // estoquemin
-            // 
-            estoquemin.DataPropertyName = "estoquemin";
-            estoquemin.HeaderText = "estoquemin";
-            estoquemin.Name = "estoquemin";
-            // 
-            // UnidadeMedidaID
-            // 
-            UnidadeMedidaID.DataPropertyName = "UnidadeMedidaId";
-            UnidadeMedidaID.HeaderText = "ID_UnidMed";
-            UnidadeMedidaID.Name = "UnidadeMedidaID";
-            // 
-            // UnidadeMedida
-            // 
-            UnidadeMedida.DataPropertyName = "unidadeMedida";
-            UnidadeMedida.HeaderText = "UndMed";
-            UnidadeMedida.Name = "UnidadeMedida";
             // 
             // label2
             // 
@@ -358,6 +290,60 @@
             txtestoquemax.Name = "txtestoquemax";
             txtestoquemax.Size = new Size(100, 23);
             txtestoquemax.TabIndex = 25;
+            // 
+            // ID
+            // 
+            ID.DataPropertyName = "id";
+            ID.HeaderText = "Id";
+            ID.Name = "ID";
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "categoria";
+            Categoria.HeaderText = "categoria.Nome";
+            Categoria.Name = "Categoria";
+            // 
+            // Qtd_Estoque
+            // 
+            Qtd_Estoque.DataPropertyName = "estoque";
+            Qtd_Estoque.HeaderText = "Qtd_Estoque";
+            Qtd_Estoque.Name = "Qtd_Estoque";
+            // 
+            // Preço_Unitario
+            // 
+            Preço_Unitario.DataPropertyName = "precounit";
+            Preço_Unitario.HeaderText = "Preço_unitário";
+            Preço_Unitario.Name = "Preço_Unitario";
+            // 
+            // Descrição
+            // 
+            Descrição.DataPropertyName = "descricao";
+            Descrição.HeaderText = "Descrição";
+            Descrição.Name = "Descrição";
+            // 
+            // estoquemax
+            // 
+            estoquemax.DataPropertyName = "estoquemax";
+            estoquemax.HeaderText = "estoquemax";
+            estoquemax.Name = "estoquemax";
+            // 
+            // estoquemedio
+            // 
+            estoquemedio.DataPropertyName = "estoquemedio";
+            estoquemedio.HeaderText = "estoquemedio";
+            estoquemedio.Name = "estoquemedio";
+            // 
+            // estoquemin
+            // 
+            estoquemin.DataPropertyName = "estoquemin";
+            estoquemin.HeaderText = "estoquemin";
+            estoquemin.Name = "estoquemin";
+            // 
+            // UnidadeMedida
+            // 
+            UnidadeMedida.DataPropertyName = "UnidadeMedida.Nome";
+            UnidadeMedida.HeaderText = "UndMed";
+            UnidadeMedida.Name = "UnidadeMedida";
             // 
             // Form_CadastroDeProduto
             // 
@@ -424,7 +410,6 @@
         private TextBox txtestoqueMin;
         private TextBox txtestoquemax;
         private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn IdCategoria;
         private DataGridViewTextBoxColumn Categoria;
         private DataGridViewTextBoxColumn Qtd_Estoque;
         private DataGridViewTextBoxColumn Preço_Unitario;
@@ -432,7 +417,6 @@
         private DataGridViewTextBoxColumn estoquemax;
         private DataGridViewTextBoxColumn estoquemedio;
         private DataGridViewTextBoxColumn estoquemin;
-        private DataGridViewTextBoxColumn UnidadeMedidaID;
         private DataGridViewTextBoxColumn UnidadeMedida;
     }
 }
