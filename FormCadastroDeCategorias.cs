@@ -58,38 +58,42 @@ namespace sysestoque_CyberKnight
         {
             this.Cursor = Cursors.WaitCursor;
 
-            var result = MessageBox.Show("Você realmente deseja excluir essa informação?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-
-            }
-
-
             if (dgvCategoria.SelectedRows.Count > 0)
             {
+                var result = MessageBox.Show("Você realmente deseja excluir essa informação?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                categoria = (dgvCategoria.SelectedRows[0].DataBoundItem as Categoria);
-
-                //Remove a categoria do DataGridView
-                bindingSourceCategorias.Remove(categoria);
-
-                //Remove do Banco de Dados
-                using (var db = new EstoqueContext())
+                if (result == DialogResult.Yes)
                 {
-                    db.Categorias.Remove(categoria);
-                    db.SaveChanges();
 
+                    categoria = (dgvCategoria.SelectedRows[0].DataBoundItem as Categoria);
 
+                    //Remove a categoria do DataGridView
+                    bindingSourceCategorias.Remove(categoria);
 
+                    //Remove do Banco de Dados
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Categorias.Remove(categoria);
+                        db.SaveChanges();
+
+                    }
                 }
+            }
+            else
+            {
+                //msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
+                //msgBarraStatus.ForeColor = Color.Red;
 
             }
+
+
 
             this.Cursor = Cursors.Default;
 
         }
 
-        private bool ValidarCampos(){
+        private bool ValidarCampos()
+        {
 
             bool estaValido = true;
 
@@ -107,20 +111,20 @@ namespace sysestoque_CyberKnight
                 estaValido = false;
             }
 
-            RestaurarDadosTxt();
+            RestaurarEstiloTxt();
 
             return estaValido;
         }
 
-        private void RestaurarDadosTxt()
+        private async Task<bool> RestaurarEstiloTxt()
         {
-            Task.Delay(5000).ContinueWith((Task) =>
-            {
-                //msgBarraStatus.Text = "";
+            await Task.Delay(5000);
+            //msgBarraStatus.Text = "";
 
-                txtNome.BackColor= Color.White;
-                txtDescricao.BackColor = Color.White;
-            });
+            txtNome.BackColor = Color.White;
+            txtDescricao.BackColor = Color.White;
+
+            return true;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -128,66 +132,72 @@ namespace sysestoque_CyberKnight
             try
             {
 
-            this.Cursor = Cursors.WaitCursor;
+                this.Cursor = Cursors.WaitCursor;
 
-            if (!this.ValidarCampos()){
-                return;
-            }
-
-            categoria.Id = null;
-            categoria.Nome = txtNome.Text;
-            categoria.Descricao = txtDescricao.Text;
-
-            if (EstaAtualizando)
-            {
-
-                categoria.Id = int.Parse(txtId.Text);
-
-                using (var db = new EstoqueContext())
+                if (!this.ValidarCampos())
                 {
-                    db.Categorias.Update(categoria);
-                    db.SaveChanges();
-
-                    listaCategoria = db.Categorias.ToList();
-
-                    bindingSourceCategorias.DataSource = listaCategoria;
-
-                    dgvCategoria.DataSource = bindingSourceCategorias;
-
-                    dgvCategoria.Refresh();
+                    return;
                 }
 
+                categoria.Id = null;
+                categoria.Nome = txtNome.Text;
+                categoria.Descricao = txtDescricao.Text;
 
-                EstaAtualizando = false;
-
-            }
-            else
-            {
-
-                using (var db = new EstoqueContext())
+                if (EstaAtualizando)
                 {
-                    db.Categorias.Add(categoria);
-                    db.SaveChanges();
 
-                    listaCategoria = db.Categorias.ToList();
+                    categoria.Id = int.Parse(txtId.Text);
 
-                    bindingSourceCategorias.DataSource = listaCategoria;
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Categorias.Update(categoria);
+                        db.SaveChanges();
 
-                    dgvCategoria.DataSource = bindingSourceCategorias;
+                        listaCategoria = db.Categorias.ToList();
 
-                    dgvCategoria.Refresh();
+                        bindingSourceCategorias.DataSource = listaCategoria;
+
+                        dgvCategoria.DataSource = bindingSourceCategorias;
+
+                        dgvCategoria.Refresh();
+                    }
+
+
+                    EstaAtualizando = false;
+
+                }
+                else
+                {
+
+                    using (var db = new EstoqueContext())
+                    {
+                        db.Categorias.Add(categoria);
+                        db.SaveChanges();
+
+                        listaCategoria = db.Categorias.ToList();
+
+                        bindingSourceCategorias.DataSource = listaCategoria;
+
+                        dgvCategoria.DataSource = bindingSourceCategorias;
+
+                        dgvCategoria.Refresh();
+                    }
+
                 }
 
+                categoria.Nome = "";
+                categoria.Descricao = "";
+
+                txtId.Text = "";
+                txtNome.Text = "";
+                txtDescricao.Text = "";
+
+                this.Cursor = Cursors.Default;
+
+
             }
-
-            txtId.Text = "";
-            txtNome.Text = "";
-            txtDescricao.Text = "";
-
-            this.Cursor = Cursors.Default;
-
-
-            }catch (Exception erro) {
+            catch (Exception erro)
+            {
                 MessageBox.Show(erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -212,7 +222,7 @@ namespace sysestoque_CyberKnight
                 msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
                 msgBarraStatus.ForeColor = Color.Red;
 
-                RestaurarDadosTxt();
+                RestaurarEstiloTxt();
             }
         }
 

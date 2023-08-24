@@ -114,7 +114,7 @@
             dgvCategoria.ReadOnly = true;
             dgvCategoria.RowTemplate.Height = 25;
             dgvCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategoria.Size = new Size(769, 195);
+            dgvCategoria.Size = new Size(769, 219);
             dgvCategoria.TabIndex = 9;
             dgvCategoria.CellContentClick += dgvCategoria_CellContentClick;
             // 
@@ -144,7 +144,7 @@
             btnExcluir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnExcluir.BackColor = Color.Transparent;
             btnExcluir.ForeColor = SystemColors.ControlText;
-            btnExcluir.Location = new Point(637, 422);
+            btnExcluir.Location = new Point(612, 445);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(75, 23);
             btnExcluir.TabIndex = 12;
@@ -159,7 +159,7 @@
             btnSalvar.BackgroundImageLayout = ImageLayout.None;
             btnSalvar.Cursor = Cursors.Hand;
             btnSalvar.ForeColor = SystemColors.ControlText;
-            btnSalvar.Location = new Point(718, 169);
+            btnSalvar.Location = new Point(718, 154);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 23);
             btnSalvar.TabIndex = 13;
@@ -172,7 +172,7 @@
             btnAtualizar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAtualizar.BackColor = Color.Transparent;
             btnAtualizar.ForeColor = SystemColors.ControlText;
-            btnAtualizar.Location = new Point(718, 422);
+            btnAtualizar.Location = new Point(718, 445);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(75, 23);
             btnAtualizar.TabIndex = 14;
@@ -196,7 +196,7 @@
             BackColor = Color.SkyBlue;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(819, 455);
+            ClientSize = new Size(819, 501);
             Controls.Add(txtNome);
             Controls.Add(btnAtualizar);
             Controls.Add(btnSalvar);
