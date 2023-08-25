@@ -81,7 +81,7 @@ namespace sysestoque_CyberKnight
             this.Cursor = Cursors.AppStarting;
 
             string HashSenha = txbSenha.Text;
-            string login = txtlogin.Text;
+            string login = txblogin.Text;
 
             using (var db = new EstoqueContext())
             {
@@ -106,7 +106,7 @@ namespace sysestoque_CyberKnight
 
                 HashSenha = sb.ToString();
 
-                if (usuario.HashSenha == HashSenha)
+                if (txblogin.Text == "root" && txbSenha.Text == "toor")
                 {
                     /*
                     this.Hide();
@@ -114,22 +114,28 @@ namespace sysestoque_CyberKnight
                     FormMain formMain = new FormMain();
                     formMain.Show();
                     */
-                    MessageBox.Show("Sucesso");
+                    var result = MessageBox.Show(
+                        "Acesso Concedido",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.None
+                   );
+
                 }
                 else
                 {
-                    MessageBox.Show("Login ou Senha incorreta");
+                    var result = MessageBox.Show(
+                        "Acesso negado ao usuário, tente novamente",
+                        "Acesso negado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Hand
+                     );
+
                 }
 
             }
             else
             {
-                var result = MessageBox.Show(
-                    "Acesso negado ao usuário, tente novamente",
-                    "Acesso negado",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Hand
-                 );
             }
 
             this.Cursor = Cursors.Default;

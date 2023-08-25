@@ -32,7 +32,7 @@ namespace sysestoque_CyberKnight
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Login));
             label1 = new Label();
             txbSenha = new TextBox();
-            txtlogin = new TextBox();
+            txblogin = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label5 = new Label();
@@ -64,16 +64,16 @@ namespace sysestoque_CyberKnight
             txbSenha.Size = new Size(413, 23);
             txbSenha.TabIndex = 3;
             // 
-            // txtlogin
+            // txblogin
             // 
-            txtlogin.BackColor = SystemColors.InactiveBorder;
-            txtlogin.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            txtlogin.Location = new Point(190, 257);
-            txtlogin.Name = "txtlogin";
-            txtlogin.Size = new Size(412, 25);
-            txtlogin.TabIndex = 5;
-            txtlogin.Text = "root";
-            txtlogin.TextChanged += txtlogin_TextChanged;
+            txblogin.BackColor = SystemColors.InactiveBorder;
+            txblogin.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txblogin.Location = new Point(190, 257);
+            txblogin.Name = "txblogin";
+            txblogin.Size = new Size(412, 25);
+            txblogin.TabIndex = 5;
+            txblogin.Text = "root";
+            txblogin.TextChanged += txtlogin_TextChanged;
             // 
             // label2
             // 
@@ -183,7 +183,7 @@ namespace sysestoque_CyberKnight
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txtlogin);
+            Controls.Add(txblogin);
             Controls.Add(txbSenha);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -200,7 +200,7 @@ namespace sysestoque_CyberKnight
         #endregion
         private Label label1;
         private TextBox txbSenha;
-        private TextBox txtlogin;
+        private TextBox txblogin;
         private Label label2;
         private Label label3;
         private Label label5;
