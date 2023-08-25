@@ -15,11 +15,12 @@ namespace sysestoque_CyberKnight.Models
         public string nome { get; set; }
         public string descricao { get; set; }
         public string estoque { get; set; }
-        public string precounit { get; set; }   
+        //public string precounit { get; set; }   
         public string unidadeMedida { get; set; }
         public float estoqueMax { get; set; }
         public float estoqueMedio { get; set; }
-        public float estoqueMin { get; set; }
+        
+        //public float estoqueMin { get; set; }
 
         [ForeignKey(nameof(categoria))]
         public int CategoriaId { get; set; } 

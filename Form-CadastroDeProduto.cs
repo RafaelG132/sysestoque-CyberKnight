@@ -97,10 +97,10 @@ namespace sysestoque_CyberKnight
                 produto.CategoriaId = (int)cbxProdCategoria.SelectedValue;
                 produto.estoque = txtqtd.Text;
                 produto.descricao = txtdescricao.Text;
-                produto.precounit = txtprecounit.Text;
+                //produto.precounit = txtprecounit.Text;
                 produto.estoqueMax = float.Parse(txtestoquemax.Text);
                 produto.estoqueMedio = float.Parse(txtestoquemedio.Text);
-                produto.estoqueMin = float.Parse(txtestoqueMin.Text);
+                //produto.estoqueMin = float.Parse(txtestoqueMin.Text);
 
                 using (var db = new EstoqueContext())
                 {
@@ -135,6 +135,7 @@ namespace sysestoque_CyberKnight
                 (dgv_Produto.Rows[e.RowIndex].DataBoundItem != null) &&
                 (dgv_Produto.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
                 )
+
             {
 
                 e.Value = BindProperty.resolve(
@@ -146,6 +147,11 @@ namespace sysestoque_CyberKnight
         private void dgv_Produto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+
+        }
+
+        private void Form_CadastroDeProduto_Load(object sender, EventArgs e)
+        {
 
         }
     }
