@@ -19,6 +19,7 @@ namespace sysestoque_CyberKnight.Models{
 
             public Fornecedor fornecedor { get; set; } = new Fornecedor();
 
+            public int Numeracao { get; set; }
 
             public Usuario? ResponsavelEntrada { get; set; }
 

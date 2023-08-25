@@ -62,9 +62,6 @@ namespace sysestoque_CyberKnight
             if (result == DialogResult.Yes)
             {
 
-            }
-
-
             if (dgvFornecedor.SelectedRows.Count > 0)
             {
 
@@ -85,22 +82,65 @@ namespace sysestoque_CyberKnight
 
             }
 
+            } else {
+                //msgBarraStatus.Text = "Você deve selecionar uma linha para poder excluir";
+                //msgBarraStatus.ForeColor = Color.Red;
+
+            }
+
             this.Cursor = Cursors.Default;
+        }
+
+        private bool ValidarCampos() {
+
+            bool estaValido = true;
+
+            //Nome
+            if (txtNome.Text == "") {
+                txtNome.BackColor = Color.Red;
+
+                estaValido = false;
+            }
+            //Descrição
+            if (txtDescricao.Text == "") {
+                txtDescricao.BackColor = Color.Red;
+                estaValido = false;
+            }
+
+            RestaurarEstiloTxt();
+
+            return estaValido;
+        }
+
+        private async Task<bool> RestaurarEstiloTxt() {
+            await Task.Delay(5000);
+            //msgBarraStatus.Text = "";
+
+            txtNome.BackColor = Color.White;
+            txtDescricao.BackColor = Color.White;
+
+            return true;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
-            this.Cursor = Cursors.WaitCursor;
+          try {
+
+                this.Cursor = Cursors.WaitCursor;
+
+                if (!this.ValidarCampos()) {
+                    return;
+                }
 
 
-            fornecedor.Cnpj = txtCNPJ.Text;
-            fornecedor.Nome = txtNome.Text;
-            fornecedor.Endereco = txtEndereco.Text;
-            fornecedor.Telefone = txtTelefone.Text;
-            fornecedor.Email = txtEmail.Text;
-            fornecedor.RazaoSocial = txtRazaoSocial.Text;
-            fornecedor.Responsavel = txtResponsavel.Text;
+               fornecedor.Cnpj = txtCNPJ.Text;
+               fornecedor.Nome = txtNome.Text;
+               fornecedor.Endereco = txtEndereco.Text;
+               fornecedor.Telefone = txtTelefone.Text;
+               fornecedor.Email = txtEmail.Text;
+               fornecedor.RazaoSocial = txtRazaoSocial.Text;
+               fornecedor.Responsavel = txtResponsavel.Text;
 
             if (EstaAtualizando)
             {
@@ -144,13 +184,21 @@ namespace sysestoque_CyberKnight
                 }
             }
 
-            txtCNPJ.Text = "";
-            txtNome.Text = "";
-            txtEndereco.Text = "";
-            txtTelefone.Text = "";
-            txtEmail.Text = "";
-            txtRazaoSocial.Text = "";
-            txtResponsavel.Text = "";
+                fornecedor.Cnpj = txtCNPJ.Text;
+                fornecedor.Nome = txtNome.Text;
+                fornecedor.Endereco = txtEndereco.Text;
+                fornecedor.Telefone = txtTelefone.Text;
+                fornecedor.Email = txtEmail.Text;
+                fornecedor.RazaoSocial = txtRazaoSocial.Text;
+                fornecedor.Responsavel = txtResponsavel.Text;
+
+                txtCNPJ.Text = "";
+                txtNome.Text = "";
+                txtEndereco.Text = "";
+                txtTelefone.Text = "";
+                txtEmail.Text = "";
+                txtRazaoSocial.Text = "";
+                txtResponsavel.Text = "";
 
             this.Cursor = Cursors.Default;
 
