@@ -8,17 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sysestoque_CyberKnight
-{
-    public partial class FormPrincipal : Form
-    {
-        public FormPrincipal()
-        {
+namespace sysestoque_CyberKnight {
+    public partial class FormPrincipal : Form {
+        public FormPrincipal() {
             InitializeComponent();
         }
 
-        private void FormPrincipal_Load(object sender, EventArgs e)
-        {
+        private void FormPrincipal_Load(object sender, EventArgs e) {
 
         }
     }
