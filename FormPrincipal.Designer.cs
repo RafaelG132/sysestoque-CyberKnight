@@ -44,10 +44,10 @@
             ItensEntrada = new DataGridViewTextBoxColumn();
             ItensSaida = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtEstoqueMinimo = new TextBox();
+            txtEstoqueMaximo = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
+            txtEstoqueMedio = new TextBox();
             label3 = new Label();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -131,14 +131,21 @@
             // 
             // dgvProdutoTelaPrincipal
             // 
+            dgvProdutoTelaPrincipal.AllowUserToAddRows = false;
+            dgvProdutoTelaPrincipal.AllowUserToDeleteRows = false;
+            dgvProdutoTelaPrincipal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProdutoTelaPrincipal.BackgroundColor = SystemColors.Control;
             dgvProdutoTelaPrincipal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProdutoTelaPrincipal.Columns.AddRange(new DataGridViewColumn[] { Id, nome, descricao, Categoria, UnidadeMedida, ItensEntrada, ItensSaida });
             dgvProdutoTelaPrincipal.Location = new Point(12, 39);
+            dgvProdutoTelaPrincipal.MultiSelect = false;
             dgvProdutoTelaPrincipal.Name = "dgvProdutoTelaPrincipal";
+            dgvProdutoTelaPrincipal.ReadOnly = true;
             dgvProdutoTelaPrincipal.RowTemplate.Height = 25;
+            dgvProdutoTelaPrincipal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProdutoTelaPrincipal.Size = new Size(776, 205);
             dgvProdutoTelaPrincipal.TabIndex = 2;
+            dgvProdutoTelaPrincipal.Click += dgvProdutoTelaPrincipal_Click;
             // 
             // Id
             // 
@@ -197,21 +204,22 @@
             label1.TabIndex = 3;
             label1.Text = "Estoque mínimo:";
             // 
-            // textBox1
+            // txtEstoqueMinimo
             // 
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(115, 255);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(192, 23);
-            textBox1.TabIndex = 4;
+            txtEstoqueMinimo.Enabled = false;
+            txtEstoqueMinimo.Location = new Point(115, 255);
+            txtEstoqueMinimo.Name = "txtEstoqueMinimo";
+            txtEstoqueMinimo.Size = new Size(192, 23);
+            txtEstoqueMinimo.TabIndex = 4;
+            txtEstoqueMinimo.TextChanged += textBox1_TextChanged;
             // 
-            // textBox2
+            // txtEstoqueMaximo
             // 
-            textBox2.Enabled = false;
-            textBox2.Location = new Point(115, 307);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(192, 23);
-            textBox2.TabIndex = 6;
+            txtEstoqueMaximo.Enabled = false;
+            txtEstoqueMaximo.Location = new Point(115, 307);
+            txtEstoqueMaximo.Name = "txtEstoqueMaximo";
+            txtEstoqueMaximo.Size = new Size(192, 23);
+            txtEstoqueMaximo.TabIndex = 6;
             // 
             // label2
             // 
@@ -222,13 +230,13 @@
             label2.TabIndex = 5;
             label2.Text = "Estoque máximo:";
             // 
-            // textBox3
+            // txtEstoqueMedio
             // 
-            textBox3.Enabled = false;
-            textBox3.Location = new Point(431, 255);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(192, 23);
-            textBox3.TabIndex = 8;
+            txtEstoqueMedio.Enabled = false;
+            txtEstoqueMedio.Location = new Point(431, 255);
+            txtEstoqueMedio.Name = "txtEstoqueMedio";
+            txtEstoqueMedio.Size = new Size(192, 23);
+            txtEstoqueMedio.TabIndex = 8;
             // 
             // label3
             // 
@@ -244,11 +252,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 372);
-            Controls.Add(textBox3);
+            Controls.Add(txtEstoqueMedio);
             Controls.Add(label3);
-            Controls.Add(textBox2);
+            Controls.Add(txtEstoqueMaximo);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(txtEstoqueMinimo);
             Controls.Add(label1);
             Controls.Add(dgvProdutoTelaPrincipal);
             Controls.Add(statusStrip1);
@@ -282,10 +290,10 @@
         private ToolStripMenuItem cadastrarNovoProdutoToolStripMenuItem;
         private DataGridView dgvProdutoTelaPrincipal;
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtEstoqueMinimo;
+        private TextBox txtEstoqueMaximo;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox txtEstoqueMedio;
         private Label label3;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn nome;

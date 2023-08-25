@@ -10,8 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sysestoque_CyberKnight{
-    public partial class FormPrincipal : Form{
+namespace sysestoque_CyberKnight {
+    public partial class FormPrincipal : Form {
         ICollection<Produto> listaProdutos = new List<Produto>();
         BindingSource bindingSourceProdutos = new BindingSource();
         Produto produto = new Produto();
@@ -25,9 +25,9 @@ namespace sysestoque_CyberKnight{
 
 
                 listaProdutos = db.Produtos
-                                         .Include( p => p.Categoria)
-                                         .Include( p => p.UnidadeMedida)
-                                         .Include( p => p.Fornecedores)
+                                         .Include(p => p.Categoria)
+                                         .Include(p => p.UnidadeMedida)
+                                         .Include(p => p.Fornecedores)
                                          .ToList();
 
                 bindingSourceProdutos.DataSource = listaProdutos;
@@ -41,6 +41,20 @@ namespace sysestoque_CyberKnight{
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void dgvProdutoTelaPrincipal_Click(object sender, EventArgs e) {
+            if (dgvProdutoTelaPrincipal.SelectedRows.Count > 0) {
+                produto = dgvProdutoTelaPrincipal.SelectedRows[0].DataBoundItem as Produto;
+
+                txtEstoqueMinimo.Text = produto.estoqueMin.ToString();
+                txtEstoqueMedio.Text = produto.estoqueMedio.ToString();
+                txtEstoqueMaximo.Text = produto.estoqueMax.ToString();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
 
         }
     }
