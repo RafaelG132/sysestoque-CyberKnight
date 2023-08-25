@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             menuStrip1 = new MenuStrip();
             produtosToolStripMenuItem = new ToolStripMenuItem();
             cadastrarNovoProdutoToolStripMenuItem = new ToolStripMenuItem();
@@ -34,13 +35,7 @@
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusLabelMsgPrincipal = new ToolStripStatusLabel();
-            dataGridView1 = new DataGridView();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox3 = new TextBox();
-            label3 = new Label();
+            dgvProdutoTelaPrincipal = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             nome = new DataGridViewTextBoxColumn();
             descricao = new DataGridViewTextBoxColumn();
@@ -48,9 +43,15 @@
             UnidadeMedida = new DataGridViewTextBoxColumn();
             ItensEntrada = new DataGridViewTextBoxColumn();
             ItensSaida = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            label2 = new Label();
+            textBox3 = new TextBox();
+            label3 = new Label();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutoTelaPrincipal).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -128,16 +129,64 @@
             statusLabelMsgPrincipal.Name = "statusLabelMsgPrincipal";
             statusLabelMsgPrincipal.Size = new Size(300, 17);
             // 
-            // dataGridView1
+            // dgvProdutoTelaPrincipal
             // 
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, nome, descricao, Categoria, UnidadeMedida, ItensEntrada, ItensSaida });
-            dataGridView1.Location = new Point(12, 39);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(776, 205);
-            dataGridView1.TabIndex = 2;
+            dgvProdutoTelaPrincipal.BackgroundColor = SystemColors.Control;
+            dgvProdutoTelaPrincipal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutoTelaPrincipal.Columns.AddRange(new DataGridViewColumn[] { Id, nome, descricao, Categoria, UnidadeMedida, ItensEntrada, ItensSaida });
+            dgvProdutoTelaPrincipal.Location = new Point(12, 39);
+            dgvProdutoTelaPrincipal.Name = "dgvProdutoTelaPrincipal";
+            dgvProdutoTelaPrincipal.RowTemplate.Height = 25;
+            dgvProdutoTelaPrincipal.Size = new Size(776, 205);
+            dgvProdutoTelaPrincipal.TabIndex = 2;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // nome
+            // 
+            nome.DataPropertyName = "nome";
+            nome.HeaderText = "Nome";
+            nome.Name = "nome";
+            nome.ReadOnly = true;
+            // 
+            // descricao
+            // 
+            descricao.DataPropertyName = "descricao";
+            descricao.HeaderText = "Descrição";
+            descricao.Name = "descricao";
+            descricao.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // UnidadeMedida
+            // 
+            UnidadeMedida.DataPropertyName = "UnidadeMedida";
+            UnidadeMedida.HeaderText = "Unidade de Medida";
+            UnidadeMedida.Name = "UnidadeMedida";
+            UnidadeMedida.ReadOnly = true;
+            // 
+            // ItensEntrada
+            // 
+            ItensEntrada.DataPropertyName = "ItensEntrada";
+            ItensEntrada.HeaderText = "Item Entrada";
+            ItensEntrada.Name = "ItensEntrada";
+            ItensEntrada.ReadOnly = true;
+            // 
+            // ItensSaida
+            // 
+            ItensSaida.DataPropertyName = "ItensSaida";
+            ItensSaida.HeaderText = "Item Saída";
+            ItensSaida.Name = "ItensSaida";
+            ItensSaida.ReadOnly = true;
             // 
             // label1
             // 
@@ -190,54 +239,6 @@
             label3.TabIndex = 7;
             label3.Text = "Estoque médio:";
             // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.ReadOnly = true;
-            // 
-            // nome
-            // 
-            nome.DataPropertyName = "nome";
-            nome.HeaderText = "Nome";
-            nome.Name = "nome";
-            nome.ReadOnly = true;
-            // 
-            // descricao
-            // 
-            descricao.DataPropertyName = "descricao";
-            descricao.HeaderText = "Descrição";
-            descricao.Name = "descricao";
-            descricao.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "Categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            Categoria.ReadOnly = true;
-            // 
-            // UnidadeMedida
-            // 
-            UnidadeMedida.DataPropertyName = "UnidadeMedida";
-            UnidadeMedida.HeaderText = "Unidade de Medida";
-            UnidadeMedida.Name = "UnidadeMedida";
-            UnidadeMedida.ReadOnly = true;
-            // 
-            // ItensEntrada
-            // 
-            ItensEntrada.DataPropertyName = "ItensEntrada";
-            ItensEntrada.HeaderText = "Item Entrada";
-            ItensEntrada.Name = "ItensEntrada";
-            ItensEntrada.ReadOnly = true;
-            // 
-            // ItensSaida
-            // 
-            ItensSaida.DataPropertyName = "ItensSaida";
-            ItensSaida.HeaderText = "Item Saída";
-            ItensSaida.Name = "ItensSaida";
-            ItensSaida.ReadOnly = true;
-            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -249,9 +250,10 @@
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvProdutoTelaPrincipal);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "FormPrincipal";
             Text = "FormPrincipal";
@@ -260,7 +262,7 @@
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutoTelaPrincipal).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -278,7 +280,7 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel statusLabelMsgPrincipal;
         private ToolStripMenuItem cadastrarNovoProdutoToolStripMenuItem;
-        private DataGridView dataGridView1;
+        private DataGridView dgvProdutoTelaPrincipal;
         private Label label1;
         private TextBox textBox1;
         private TextBox textBox2;
