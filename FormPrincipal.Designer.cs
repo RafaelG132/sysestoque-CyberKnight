@@ -24,23 +24,30 @@
         /// </summary>
         private void InitializeComponent() {
             menuStrip1 = new MenuStrip();
-            statusStrip1 = new StatusStrip();
             produtosToolStripMenuItem = new ToolStripMenuItem();
+            cadastrarNovoProdutoToolStripMenuItem = new ToolStripMenuItem();
             fornecedorToolStripMenuItem = new ToolStripMenuItem();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
-            statusLabelMsgPrincipal = new ToolStripStatusLabel();
             notaDeEntradaToolStripMenuItem = new ToolStripMenuItem();
             notaDeSaídaToolStripMenuItem = new ToolStripMenuItem();
             ajudaToolStripMenuItem = new ToolStripMenuItem();
             informaçõesToolStripMenuItem = new ToolStripMenuItem();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            statusLabelMsgPrincipal = new ToolStripStatusLabel();
             dataGridView1 = new DataGridView();
-            cadastrarNovoProdutoToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             label2 = new Label();
             textBox3 = new TextBox();
             label3 = new Label();
+            Id = new DataGridViewTextBoxColumn();
+            nome = new DataGridViewTextBoxColumn();
+            descricao = new DataGridViewTextBoxColumn();
+            Categoria = new DataGridViewTextBoxColumn();
+            UnidadeMedida = new DataGridViewTextBoxColumn();
+            ItensEntrada = new DataGridViewTextBoxColumn();
+            ItensSaida = new DataGridViewTextBoxColumn();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -55,15 +62,6 @@
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // statusStrip1
-            // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, statusLabelMsgPrincipal });
-            statusStrip1.Location = new Point(0, 350);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 22);
-            statusStrip1.TabIndex = 1;
-            statusStrip1.Text = "statusStrip1";
-            // 
             // produtosToolStripMenuItem
             // 
             produtosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarNovoProdutoToolStripMenuItem });
@@ -71,24 +69,17 @@
             produtosToolStripMenuItem.Size = new Size(67, 20);
             produtosToolStripMenuItem.Text = "Produtos";
             // 
+            // cadastrarNovoProdutoToolStripMenuItem
+            // 
+            cadastrarNovoProdutoToolStripMenuItem.Name = "cadastrarNovoProdutoToolStripMenuItem";
+            cadastrarNovoProdutoToolStripMenuItem.Size = new Size(200, 22);
+            cadastrarNovoProdutoToolStripMenuItem.Text = "Cadastrar novo produto";
+            // 
             // fornecedorToolStripMenuItem
             // 
             fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
             fornecedorToolStripMenuItem.Size = new Size(79, 20);
             fornecedorToolStripMenuItem.Text = "Fornecedor";
-            // 
-            // toolStripStatusLabel1
-            // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(66, 17);
-            toolStripStatusLabel1.Text = "Mensagem";
-            toolStripStatusLabel1.Click += toolStripStatusLabel1_Click;
-            // 
-            // statusLabelMsgPrincipal
-            // 
-            statusLabelMsgPrincipal.AutoSize = false;
-            statusLabelMsgPrincipal.Name = "statusLabelMsgPrincipal";
-            statusLabelMsgPrincipal.Size = new Size(300, 17);
             // 
             // notaDeEntradaToolStripMenuItem
             // 
@@ -112,24 +103,41 @@
             // informaçõesToolStripMenuItem
             // 
             informaçõesToolStripMenuItem.Name = "informaçõesToolStripMenuItem";
-            informaçõesToolStripMenuItem.Size = new Size(180, 22);
+            informaçõesToolStripMenuItem.Size = new Size(140, 22);
             informaçõesToolStripMenuItem.Text = "Informações";
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, statusLabelMsgPrincipal });
+            statusStrip1.Location = new Point(0, 350);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 1;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(66, 17);
+            toolStripStatusLabel1.Text = "Mensagem";
+            toolStripStatusLabel1.Click += toolStripStatusLabel1_Click;
+            // 
+            // statusLabelMsgPrincipal
+            // 
+            statusLabelMsgPrincipal.AutoSize = false;
+            statusLabelMsgPrincipal.Name = "statusLabelMsgPrincipal";
+            statusLabelMsgPrincipal.Size = new Size(300, 17);
             // 
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, nome, descricao, Categoria, UnidadeMedida, ItensEntrada, ItensSaida });
             dataGridView1.Location = new Point(12, 39);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(776, 205);
             dataGridView1.TabIndex = 2;
-            // 
-            // cadastrarNovoProdutoToolStripMenuItem
-            // 
-            cadastrarNovoProdutoToolStripMenuItem.Name = "cadastrarNovoProdutoToolStripMenuItem";
-            cadastrarNovoProdutoToolStripMenuItem.Size = new Size(200, 22);
-            cadastrarNovoProdutoToolStripMenuItem.Text = "Cadastrar novo produto";
             // 
             // label1
             // 
@@ -182,6 +190,54 @@
             label3.TabIndex = 7;
             label3.Text = "Estoque médio:";
             // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            // 
+            // nome
+            // 
+            nome.DataPropertyName = "nome";
+            nome.HeaderText = "Nome";
+            nome.Name = "nome";
+            nome.ReadOnly = true;
+            // 
+            // descricao
+            // 
+            descricao.DataPropertyName = "descricao";
+            descricao.HeaderText = "Descrição";
+            descricao.Name = "descricao";
+            descricao.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            Categoria.ReadOnly = true;
+            // 
+            // UnidadeMedida
+            // 
+            UnidadeMedida.DataPropertyName = "UnidadeMedida";
+            UnidadeMedida.HeaderText = "Unidade de Medida";
+            UnidadeMedida.Name = "UnidadeMedida";
+            UnidadeMedida.ReadOnly = true;
+            // 
+            // ItensEntrada
+            // 
+            ItensEntrada.DataPropertyName = "ItensEntrada";
+            ItensEntrada.HeaderText = "Item Entrada";
+            ItensEntrada.Name = "ItensEntrada";
+            ItensEntrada.ReadOnly = true;
+            // 
+            // ItensSaida
+            // 
+            ItensSaida.DataPropertyName = "ItensSaida";
+            ItensSaida.HeaderText = "Item Saída";
+            ItensSaida.Name = "ItensSaida";
+            ItensSaida.ReadOnly = true;
+            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -229,5 +285,12 @@
         private Label label2;
         private TextBox textBox3;
         private Label label3;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn nome;
+        private DataGridViewTextBoxColumn descricao;
+        private DataGridViewTextBoxColumn Categoria;
+        private DataGridViewTextBoxColumn UnidadeMedida;
+        private DataGridViewTextBoxColumn ItensEntrada;
+        private DataGridViewTextBoxColumn ItensSaida;
     }
 }
