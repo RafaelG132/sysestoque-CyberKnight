@@ -58,9 +58,8 @@ namespace sysestoque_CyberKnight
         {
             this.Cursor = Cursors.WaitCursor;
 
-            if (dgvCategoria.SelectedRows.Count > 0)
-            {
-                var result = MessageBox.Show("Você realmente deseja excluir essa informação?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dgvCategoria.SelectedRows.Count > 0){
+             var result = MessageBox.Show("Você realmente deseja excluir essa informação?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -134,8 +133,7 @@ namespace sysestoque_CyberKnight
 
                 this.Cursor = Cursors.WaitCursor;
 
-                if (!this.ValidarCampos())
-                {
+                if (!this.ValidarCampos()){
                     return;
                 }
 

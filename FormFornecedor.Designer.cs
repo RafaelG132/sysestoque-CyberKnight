@@ -1,7 +1,5 @@
-﻿namespace sysestoque_CyberKnight
-{
-    partial class FormFornecedor
-    {
+﻿namespace sysestoque_CyberKnight {
+    partial class FormFornecedor {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,8 +22,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFornecedor));
             btnAtualizar = new Button();
             btnSalvar = new Button();
@@ -136,7 +131,7 @@
             dgvFornecedor.ReadOnly = true;
             dgvFornecedor.RowTemplate.Height = 25;
             dgvFornecedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFornecedor.Size = new Size(795, 166);
+            dgvFornecedor.Size = new Size(795, 174);
             dgvFornecedor.TabIndex = 19;
             dgvFornecedor.CellContentClick += dgvFornecedor_CellContentClick;
             // 
@@ -296,5 +291,6 @@
         private TextBox txtResponsavel;
         private Label label7;
         private TextBox txtRazaoSocial;
+        private ToolStripStatusLabel msgBarraStatus;
     }
 }
