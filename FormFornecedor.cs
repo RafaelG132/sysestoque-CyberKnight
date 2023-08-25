@@ -184,13 +184,13 @@ namespace sysestoque_CyberKnight
                 }
             }
 
-                fornecedor.Cnpj = txtCNPJ.Text;
-                fornecedor.Nome = txtNome.Text;
-                fornecedor.Endereco = txtEndereco.Text;
-                fornecedor.Telefone = txtTelefone.Text;
-                fornecedor.Email = txtEmail.Text;
-                fornecedor.RazaoSocial = txtRazaoSocial.Text;
-                fornecedor.Responsavel = txtResponsavel.Text;
+                fornecedor.Cnpj = "";
+                fornecedor.Nome = "";
+                fornecedor.Endereco = "";
+                fornecedor.Telefone = "";
+                fornecedor.Email = "";
+                fornecedor.RazaoSocial = "";
+                fornecedor.Responsavel = "";
 
                 txtCNPJ.Text = "";
                 txtNome.Text = "";
@@ -202,6 +202,9 @@ namespace sysestoque_CyberKnight
 
             this.Cursor = Cursors.Default;
 
+        } catch (Exception erro) {
+                MessageBox.Show(erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
