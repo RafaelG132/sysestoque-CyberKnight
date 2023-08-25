@@ -1,4 +1,5 @@
-﻿using sysestoque_CyberKnight.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using sysestoque_CyberKnight.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,28 @@ using System.Windows.Forms;
 
 namespace sysestoque_CyberKnight{
     public partial class FormPrincipal : Form{
-        ICollection<Produto> listaProduto = new List<Produto>();
-        BindingSource bindingSourceProduto = new BindingSource();
+        ICollection<Produto> listaProdutos = new List<Produto>();
+        BindingSource bindingSourceProdutos = new BindingSource();
         Produto produto = new Produto();
 
         public FormPrincipal() {
             InitializeComponent();
+
+            using (var db = new EstoqueContext()) {
+
+                db.Database.GetConnectionString();
+
+
+                listaProdutos = db.Produtos
+                                         .Include( p => p.Categoria)
+                                         .Include( p => p.UnidadeMedida)
+                                         .Include( p => p.Fornecedores)
+                                         .ToList();
+
+                bindingSourceProdutos.DataSource = listaProdutos;
+
+                dgvProdutoTelaPrincipal.DataSource = bindingSourceProdutos;
+            }
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e) {
