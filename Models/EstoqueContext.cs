@@ -13,7 +13,7 @@ namespace sysestoque_CyberKnight.Models
         // se transformar em tabela no banco de dados
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<NotaEntrada> NotasEntrada { get; set; }
-        public DbSet<Fornecedor> Forncedores { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<ItemEntrada> ItemEntrada { get; set; }
         public DbSet<ItemSaida> ItemSaida { get; set; }
         public DbSet<NotaSaida> NotaSaida { get; set; }

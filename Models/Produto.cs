@@ -15,7 +15,9 @@ namespace sysestoque_CyberKnight.Models
         public string nome { get; set; }
         public string descricao { get; set; }
         public string estoque { get; set; }
-        //public string precounit { get; set; }   
+
+        public double precoUnit { get; set; }
+        
         public string unidadeMedida { get; set; }
         public float estoqueMax { get; set; }
         public float estoqueMedio { get; set; }

@@ -11,8 +11,8 @@ using sysestoque_CyberKnight.Models;
 namespace sysestoque_CyberKnight.Migrations
 {
     [DbContext(typeof(EstoqueContext))]
-    [Migration("20230802021211_v200")]
-    partial class v200
+    [Migration("20230828190234_migrationV1")]
+    partial class migrationV1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace sysestoque_CyberKnight.Migrations
 
                     b.HasKey("Nome");
 
-                    b.ToTable("Forncedores");
+                    b.ToTable("Fornecedores");
                 });
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.ItemEntrada", b =>
@@ -159,7 +159,7 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Produto", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int?>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -186,6 +186,9 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<double>("precoUnit")
+                        .HasColumnType("double");
 
                     b.Property<string>("unidadeMedida")
                         .IsRequired()
@@ -315,7 +318,7 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Produto", b =>
                 {
-                    b.HasOne("sysestoque_CyberKnight.Models.Categoria", "Categoria")
+                    b.HasOne("sysestoque_CyberKnight.Models.Categoria", "categoria")
                         .WithMany()
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -327,9 +330,9 @@ namespace sysestoque_CyberKnight.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Categoria");
-
                     b.Navigation("UnidadeMedida");
+
+                    b.Navigation("categoria");
                 });
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Fornecedor", b =>

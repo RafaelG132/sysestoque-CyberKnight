@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_CadastroDeProduto));
             label1 = new Label();
             txtqtd = new TextBox();
-            txtprecounit = new TextBox();
+            txtprecoUnit = new TextBox();
             txt_id = new TextBox();
             txtdescricao = new TextBox();
             lbl_id = new Label();
@@ -46,6 +46,11 @@
             btn_excluir = new Button();
             btn_salvar = new Button();
             dgv_Produto = new DataGridView();
+            label3 = new Label();
+            label4 = new Label();
+            txtestoquemedio = new TextBox();
+            txtestoquemax = new TextBox();
+            menuStrip1 = new MenuStrip();
             ID = new DataGridViewTextBoxColumn();
             Categoria = new DataGridViewTextBoxColumn();
             Qtd_Estoque = new DataGridViewTextBoxColumn();
@@ -53,15 +58,7 @@
             Descrição = new DataGridViewTextBoxColumn();
             estoquemax = new DataGridViewTextBoxColumn();
             estoquemedio = new DataGridViewTextBoxColumn();
-            estoquemin = new DataGridViewTextBoxColumn();
             UnidadeMedida = new DataGridViewTextBoxColumn();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            txtestoquemedio = new TextBox();
-            txtestoqueMin = new TextBox();
-            txtestoquemax = new TextBox();
-            menuStrip1 = new MenuStrip();
             ((System.ComponentModel.ISupportInitialize)dgv_Produto).BeginInit();
             SuspendLayout();
             // 
@@ -84,12 +81,12 @@
             txtqtd.Size = new Size(100, 23);
             txtqtd.TabIndex = 2;
             // 
-            // txtprecounit
+            // txtprecoUnit
             // 
-            txtprecounit.Location = new Point(591, 66);
-            txtprecounit.Name = "txtprecounit";
-            txtprecounit.Size = new Size(100, 23);
-            txtprecounit.TabIndex = 3;
+            txtprecoUnit.Location = new Point(591, 66);
+            txtprecoUnit.Name = "txtprecoUnit";
+            txtprecoUnit.Size = new Size(100, 23);
+            txtprecoUnit.TabIndex = 3;
             // 
             // txt_id
             // 
@@ -228,7 +225,7 @@
             // 
             dgv_Produto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_Produto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Produto.Columns.AddRange(new DataGridViewColumn[] { ID, Categoria, Qtd_Estoque, Preço_Unitario, Descrição, estoquemax, estoquemedio, estoquemin, UnidadeMedida });
+            dgv_Produto.Columns.AddRange(new DataGridViewColumn[] { ID, Categoria, Qtd_Estoque, Preço_Unitario, Descrição, estoquemax, estoquemedio, UnidadeMedida });
             dgv_Produto.Location = new Point(20, 255);
             dgv_Produto.Name = "dgv_Produto";
             dgv_Produto.RowTemplate.Height = 25;
@@ -236,71 +233,6 @@
             dgv_Produto.TabIndex = 19;
             dgv_Produto.CellContentClick += dgv_Produto_CellContentClick;
             dgv_Produto.CellFormatting += dgv_Produto_CellFormatting;
-            // 
-            // ID
-            // 
-            ID.DataPropertyName = "id";
-            ID.HeaderText = "Id";
-            ID.Name = "ID";
-            // 
-            // Categoria
-            // 
-            Categoria.DataPropertyName = "categoria";
-            Categoria.HeaderText = "Categoria";
-            Categoria.Name = "Categoria";
-            // 
-            // Qtd_Estoque
-            // 
-            Qtd_Estoque.DataPropertyName = "estoque";
-            Qtd_Estoque.HeaderText = "Qtd_Estoque";
-            Qtd_Estoque.Name = "Qtd_Estoque";
-            // 
-            // Preço_Unitario
-            // 
-            Preço_Unitario.DataPropertyName = "precounit";
-            Preço_Unitario.HeaderText = "Preço_unitário";
-            Preço_Unitario.Name = "Preço_Unitario";
-            // 
-            // Descrição
-            // 
-            Descrição.DataPropertyName = "descricao";
-            Descrição.HeaderText = "Descrição";
-            Descrição.Name = "Descrição";
-            // 
-            // estoquemax
-            // 
-            estoquemax.DataPropertyName = "estoquemax";
-            estoquemax.HeaderText = "estoquemax";
-            estoquemax.Name = "estoquemax";
-            // 
-            // estoquemedio
-            // 
-            estoquemedio.DataPropertyName = "estoquemedio";
-            estoquemedio.HeaderText = "estoquemedio";
-            estoquemedio.Name = "estoquemedio";
-            // 
-            // estoquemin
-            // 
-            estoquemin.DataPropertyName = "estoquemin";
-            estoquemin.HeaderText = "estoquemin";
-            estoquemin.Name = "estoquemin";
-            // 
-            // UnidadeMedida
-            // 
-            UnidadeMedida.DataPropertyName = "UnidadeMedida";
-            UnidadeMedida.HeaderText = "UndMed";
-            UnidadeMedida.Name = "UnidadeMedida";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(253, 166);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 15);
-            label2.TabIndex = 20;
-            label2.Text = "estoquemin:";
             // 
             // label3
             // 
@@ -332,13 +264,6 @@
             txtestoquemedio.Size = new Size(100, 23);
             txtestoquemedio.TabIndex = 23;
             // 
-            // txtestoqueMin
-            // 
-            txtestoqueMin.Location = new Point(332, 163);
-            txtestoqueMin.Name = "txtestoqueMin";
-            txtestoqueMin.Size = new Size(100, 23);
-            txtestoqueMin.TabIndex = 24;
-            // 
             // txtestoquemax
             // 
             txtestoquemax.Location = new Point(472, 115);
@@ -354,6 +279,54 @@
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
+            // ID
+            // 
+            ID.DataPropertyName = "id";
+            ID.HeaderText = "Id";
+            ID.Name = "ID";
+            // 
+            // Categoria
+            // 
+            Categoria.DataPropertyName = "Categoria";
+            Categoria.HeaderText = "Categoria";
+            Categoria.Name = "Categoria";
+            // 
+            // Qtd_Estoque
+            // 
+            Qtd_Estoque.DataPropertyName = "estoque";
+            Qtd_Estoque.HeaderText = "Qtd_Estoque";
+            Qtd_Estoque.Name = "Qtd_Estoque";
+            // 
+            // Preço_Unitario
+            // 
+            Preço_Unitario.DataPropertyName = "precoUnit";
+            Preço_Unitario.HeaderText = "Preço_unitário";
+            Preço_Unitario.Name = "Preço_Unitario";
+            // 
+            // Descrição
+            // 
+            Descrição.DataPropertyName = "descricao";
+            Descrição.HeaderText = "Descrição";
+            Descrição.Name = "Descrição";
+            // 
+            // estoquemax
+            // 
+            estoquemax.DataPropertyName = "estoquemax";
+            estoquemax.HeaderText = "estoquemax";
+            estoquemax.Name = "estoquemax";
+            // 
+            // estoquemedio
+            // 
+            estoquemedio.DataPropertyName = "estoquemedio";
+            estoquemedio.HeaderText = "estoquemedio";
+            estoquemedio.Name = "estoquemedio";
+            // 
+            // UnidadeMedida
+            // 
+            UnidadeMedida.DataPropertyName = "unidadeMedida";
+            UnidadeMedida.HeaderText = "UndMed";
+            UnidadeMedida.Name = "UnidadeMedida";
+            // 
             // Form_CadastroDeProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -361,11 +334,9 @@
             BackgroundImage = Properties.Resources.Apresentação_de_Plano_de_Marketing_Minimalista_Bege_e_Rosa;
             ClientSize = new Size(701, 463);
             Controls.Add(txtestoquemax);
-            Controls.Add(txtestoqueMin);
             Controls.Add(txtestoquemedio);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(dgv_Produto);
             Controls.Add(btn_salvar);
             Controls.Add(btn_excluir);
@@ -380,7 +351,7 @@
             Controls.Add(lbl_id);
             Controls.Add(txtdescricao);
             Controls.Add(txt_id);
-            Controls.Add(txtprecounit);
+            Controls.Add(txtprecoUnit);
             Controls.Add(txtqtd);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
@@ -399,7 +370,7 @@
         #endregion
         private Label label1;
         private TextBox txtqtd;
-        private TextBox txtprecounit;
+        private TextBox txtprecoUnit;
         private TextBox txt_id;
         private TextBox txtdescricao;
         private Label lbl_id;
@@ -415,11 +386,9 @@
         private Button btn_salvar;
         private DataGridView dataGridView1;
         private DataGridView dgv_Produto;
-        private Label label2;
         private Label label3;
         private Label label4;
         private TextBox txtestoquemedio;
-        private TextBox txtestoqueMin;
         private TextBox txtestoquemax;
         private MenuStrip menuStrip1;
         private DataGridViewTextBoxColumn ID;
@@ -429,7 +398,6 @@
         private DataGridViewTextBoxColumn Descrição;
         private DataGridViewTextBoxColumn estoquemax;
         private DataGridViewTextBoxColumn estoquemedio;
-        private DataGridViewTextBoxColumn estoquemin;
         private DataGridViewTextBoxColumn UnidadeMedida;
     }
 }

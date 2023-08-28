@@ -97,9 +97,10 @@ namespace sysestoque_CyberKnight
                 produto.CategoriaId = (int)cbxProdCategoria.SelectedValue;
                 produto.estoque = txtqtd.Text;
                 produto.descricao = txtdescricao.Text;
-                //produto.precounit = txtprecounit.Text;
+                produto.precoUnit = Convert.ToDouble(txtprecoUnit.Text);
                 produto.estoqueMax = float.Parse(txtestoquemax.Text);
                 produto.estoqueMedio = float.Parse(txtestoquemedio.Text);
+                produto.unidadeMedida = cbxProdUnidMedida.SelectedText;
                 //produto.estoqueMin = float.Parse(txtestoqueMin.Text);
 
                 using (var db = new EstoqueContext())
