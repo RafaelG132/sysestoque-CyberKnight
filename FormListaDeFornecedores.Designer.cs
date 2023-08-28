@@ -46,6 +46,7 @@
             // 
             // btnFornecedores
             // 
+            btnFornecedores.DialogResult = DialogResult.OK;
             btnFornecedores.Location = new Point(650, 415);
             btnFornecedores.Name = "btnFornecedores";
             btnFornecedores.Size = new Size(138, 23);
