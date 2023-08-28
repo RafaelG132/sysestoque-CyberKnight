@@ -133,6 +133,7 @@
             // 
             dgvProdutoTelaPrincipal.AllowUserToAddRows = false;
             dgvProdutoTelaPrincipal.AllowUserToDeleteRows = false;
+            dgvProdutoTelaPrincipal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvProdutoTelaPrincipal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProdutoTelaPrincipal.BackgroundColor = SystemColors.Control;
             dgvProdutoTelaPrincipal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -145,6 +146,9 @@
             dgvProdutoTelaPrincipal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProdutoTelaPrincipal.Size = new Size(776, 205);
             dgvProdutoTelaPrincipal.TabIndex = 2;
+            dgvProdutoTelaPrincipal.CellContentClick += dgvProdutoTelaPrincipal_CellContentClick;
+            dgvProdutoTelaPrincipal.CellFormatting += dgvProdutoTelaPrincipal_CellFormatting;
+            dgvProdutoTelaPrincipal.SelectionChanged += dgvProdutoTelaPrincipal_SelectionChanged;
             dgvProdutoTelaPrincipal.Click += dgvProdutoTelaPrincipal_Click;
             // 
             // Id
@@ -169,14 +173,14 @@
             // 
             // Categoria
             // 
-            Categoria.DataPropertyName = "Categoria";
+            Categoria.DataPropertyName = "Categoria.Nome";
             Categoria.HeaderText = "Categoria";
             Categoria.Name = "Categoria";
             Categoria.ReadOnly = true;
             // 
             // UnidadeMedida
             // 
-            UnidadeMedida.DataPropertyName = "UnidadeMedida";
+            UnidadeMedida.DataPropertyName = "UnidadeMedida.Nome";
             UnidadeMedida.HeaderText = "Unidade de Medida";
             UnidadeMedida.Name = "UnidadeMedida";
             UnidadeMedida.ReadOnly = true;
@@ -197,6 +201,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Location = new Point(12, 258);
             label1.Name = "label1";
@@ -206,6 +211,7 @@
             // 
             // txtEstoqueMinimo
             // 
+            txtEstoqueMinimo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             txtEstoqueMinimo.Enabled = false;
             txtEstoqueMinimo.Location = new Point(115, 255);
             txtEstoqueMinimo.Name = "txtEstoqueMinimo";
@@ -215,6 +221,7 @@
             // 
             // txtEstoqueMaximo
             // 
+            txtEstoqueMaximo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             txtEstoqueMaximo.Enabled = false;
             txtEstoqueMaximo.Location = new Point(115, 307);
             txtEstoqueMaximo.Name = "txtEstoqueMaximo";
@@ -223,6 +230,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
             label2.Location = new Point(12, 310);
             label2.Name = "label2";
@@ -240,6 +248,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Location = new Point(328, 258);
             label3.Name = "label3";

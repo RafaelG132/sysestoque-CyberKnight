@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using sysestoque_CyberKnight.Models;
+using sysestoque_CyberKnight.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace sysestoque_CyberKnight {
 
         public FormPrincipal() {
             InitializeComponent();
+            dgvProdutoTelaPrincipal.AutoGenerateColumns = false;
 
             using (var db = new EstoqueContext()) {
 
@@ -55,6 +57,33 @@ namespace sysestoque_CyberKnight {
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void dgvProdutoTelaPrincipal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            if (
+                (dgvProdutoTelaPrincipal.Rows[e.RowIndex].DataBoundItem != null) &&
+                (dgvProdutoTelaPrincipal.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+                ) {
+
+                e.Value = BindProperty.resolve(
+                            dgvProdutoTelaPrincipal.Rows[e.RowIndex].DataBoundItem,
+                            dgvProdutoTelaPrincipal.Columns[e.ColumnIndex].DataPropertyName
+                        );
+            }
+        }
+
+        private void dgvProdutoTelaPrincipal_SelectionChanged(object sender, EventArgs e) {
+            if (dgvProdutoTelaPrincipal.SelectedRows.Count > 0) {
+                var produtoAtual = dgvProdutoTelaPrincipal.SelectedRows[0].DataBoundItem as Produto;
+
+                txtEstoqueMinimo.Text = produtoAtual.estoqueMin.ToString();
+                txtEstoqueMedio.Text = produtoAtual.estoqueMedio.ToString();
+                txtEstoqueMaximo.Text = produtoAtual.estoqueMax.ToString();
+            }
+        }
+
+        private void dgvProdutoTelaPrincipal_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
     }

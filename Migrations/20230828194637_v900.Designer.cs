@@ -11,8 +11,8 @@ using sysestoque_CyberKnight.Models;
 namespace sysestoque_CyberKnight.Migrations
 {
     [DbContext(typeof(EstoqueContext))]
-    [Migration("20230802001215_v100")]
-    partial class v100
+    [Migration("20230828194637_v900")]
+    partial class v900
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,12 +69,20 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<string>("Endereco")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("RazaoSocial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Responsavel")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Telefone")
                         .HasColumnType("longtext");
 
                     b.HasKey("Nome");
 
-                    b.ToTable("Forncedores");
+                    b.ToTable("Fornecedores");
                 });
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.ItemEntrada", b =>
@@ -186,6 +194,9 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<double>("precoUnit")
+                        .HasColumnType("double");
 
                     b.Property<string>("unidadeMedida")
                         .IsRequired()

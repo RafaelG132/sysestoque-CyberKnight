@@ -66,12 +66,20 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<string>("Endereco")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("RazaoSocial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Responsavel")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Telefone")
                         .HasColumnType("longtext");
 
                     b.HasKey("Nome");
 
-                    b.ToTable("Forncedores");
+                    b.ToTable("Fornecedores");
                 });
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.ItemEntrada", b =>
@@ -183,6 +191,9 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<double>("precoUnit")
+                        .HasColumnType("double");
 
                     b.Property<string>("unidadeMedida")
                         .IsRequired()
