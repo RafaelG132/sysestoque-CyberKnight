@@ -106,7 +106,7 @@ namespace sysestoque_CyberKnight
 
                 HashSenha = sb.ToString();
 
-                if (txblogin.Text == "root" && txbSenha.Text == "toor")
+                if (HashSenha == usuario.HashSenha)
                 {
                     /*
                     this.Hide();
@@ -133,9 +133,17 @@ namespace sysestoque_CyberKnight
 
                 }
 
+
+
             }
             else
             {
+                var result = MessageBox.Show(
+                                "Acesso negado ao usuário, tente novamente",
+                                "Acesso negado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Hand
+                              );
             }
 
             this.Cursor = Cursors.Default;
