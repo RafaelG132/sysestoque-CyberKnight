@@ -13,7 +13,7 @@ namespace sysestoque_CyberKnight.Models
         // se transformar em tabela no banco de dados
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<NotaEntrada> NotasEntrada { get; set; }
-        public DbSet<Fornecedor> Forncedores { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<ItemEntrada> ItemEntrada { get; set; }
         public DbSet<ItemSaida> ItemSaida { get; set; }
         public DbSet<NotaSaida> NotaSaida { get; set; }
@@ -25,7 +25,7 @@ namespace sysestoque_CyberKnight.Models
 
         protected override void
             OnConfiguring(DbContextOptionsBuilder options){
-            options.UseMySQL("Server=192.168.30.191;port=3306;database=estoque;uid=user_estoque;password=#Root2022");
+            options.UseMySQL("Server=192.168.30.68;port=3306;database=estoque_cyberknight;uid=user_estoque;password=#Root2022");
 
 
         }
