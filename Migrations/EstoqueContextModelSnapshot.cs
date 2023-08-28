@@ -21,13 +21,13 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("FornecedorProduto", b =>
                 {
-                    b.Property<string>("FornecedoresNome")
+                    b.Property<string>("FornecedoresCnpj")
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("produtosid")
                         .HasColumnType("int");
 
-                    b.HasKey("FornecedoresNome", "produtosid");
+                    b.HasKey("FornecedoresCnpj", "produtosid");
 
                     b.HasIndex("produtosid");
 
@@ -36,7 +36,7 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Categoria", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -54,11 +54,8 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Fornecedor", b =>
                 {
-                    b.Property<string>("Nome")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<string>("Cnpj")
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
@@ -66,12 +63,21 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<string>("Endereco")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("RazaoSocial")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Responsavel")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Telefone")
                         .HasColumnType("longtext");
 
-                    b.HasKey("Nome");
+                    b.HasKey("Cnpj");
 
-                    b.ToTable("Forncedores");
+                    b.ToTable("Fornecedores");
                 });
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.ItemEntrada", b =>
@@ -119,20 +125,20 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("ResponsavelEntradanome")
+                    b.Property<string>("ResponsavelEntradalogin")
                         .HasColumnType("varchar(255)");
 
                     b.Property<float>("ValorTotal")
                         .HasColumnType("float");
 
-                    b.Property<string>("fornecedorNome")
+                    b.Property<string>("fornecedorCnpj")
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ResponsavelEntradanome");
+                    b.HasIndex("ResponsavelEntradalogin");
 
-                    b.HasIndex("fornecedorNome");
+                    b.HasIndex("fornecedorCnpj");
 
                     b.ToTable("NotasEntrada");
                 });
@@ -218,7 +224,7 @@ namespace sysestoque_CyberKnight.Migrations
 
             modelBuilder.Entity("sysestoque_CyberKnight.Models.Usuario", b =>
                 {
-                    b.Property<string>("nome")
+                    b.Property<string>("login")
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("HashSenha")
@@ -229,7 +235,7 @@ namespace sysestoque_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("login")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -237,7 +243,7 @@ namespace sysestoque_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("nome");
+                    b.HasKey("login");
 
                     b.ToTable("Usuarios");
                 });
@@ -246,7 +252,7 @@ namespace sysestoque_CyberKnight.Migrations
                 {
                     b.HasOne("sysestoque_CyberKnight.Models.Fornecedor", null)
                         .WithMany()
-                        .HasForeignKey("FornecedoresNome")
+                        .HasForeignKey("FornecedoresCnpj")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -299,11 +305,11 @@ namespace sysestoque_CyberKnight.Migrations
                 {
                     b.HasOne("sysestoque_CyberKnight.Models.Usuario", "ResponsavelEntrada")
                         .WithMany()
-                        .HasForeignKey("ResponsavelEntradanome");
+                        .HasForeignKey("ResponsavelEntradalogin");
 
                     b.HasOne("sysestoque_CyberKnight.Models.Fornecedor", "fornecedor")
                         .WithMany("NFs")
-                        .HasForeignKey("fornecedorNome");
+                        .HasForeignKey("fornecedorCnpj");
 
                     b.Navigation("ResponsavelEntrada");
 

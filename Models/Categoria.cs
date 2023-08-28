@@ -11,7 +11,7 @@ namespace sysestoque_CyberKnight.Models
     public class Categoria{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Nome { get; set; }
         public string? Descricao { get; set; }
     }
