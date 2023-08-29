@@ -1,4 +1,6 @@
-﻿using sysestoque_CyberKnight.Models;
+﻿using Refit;
+using SysEstoque.CallAPI.Interface;
+using sysestoque_CyberKnight.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -251,6 +253,38 @@ namespace sysestoque_CyberKnight {
                 msgBarraStatus.ForeColor = Color.Red;
 
                 RestaurarEstiloTxt();
+            }
+        }
+
+        private void btnConsultarFornecedor_Click(object sender, EventArgs e) {
+            string cnpjDigitado = txtCNPJ.Text;
+
+            try {
+                this.buscarDadosCNPJ(cnpjDigitado);
+            } catch {
+
+                MessageBox.Show("Erro ao consultar os dados do CNPJ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async Task buscarDadosCNPJ(string cnpj) {
+            var cnpjClient = RestService.For<ICNPJReceitaWS>("https://receitaws.com.br/");
+
+            var cnpjDados = await cnpjClient.GetAddressAsync(cnpj);
+
+            if (cnpjDados != null) {
+                txtCNPJ.Text = cnpjDados.cnpj;
+                txtNome.Text = cnpjDados.fantasia;
+                txtRazaoSocial.Text = cnpjDados.nome;
+                txtEndereco.Text = $"{cnpjDados.logradouro}, nº {cnpjDados.numero}, complemento {cnpjDados.complemento}, " +
+                    $"CEP {cnpjDados.cep}, Bairro {cnpjDados.bairro}, Município {cnpjDados.municipio}, UF {cnpjDados.uf}";
+                txtTelefone.Text = cnpjDados.telefone;
+                txtEmail.Text = cnpjDados.email;
+
+                if (cnpjDados.qsa != null) {
+                    txtResponsavel.Text = cnpjDados.qsa[0].nome;
+                }
+
             }
         }
     }

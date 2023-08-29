@@ -11,8 +11,8 @@ using sysestoque_CyberKnight.Models;
 namespace sysestoque_CyberKnight.Migrations
 {
     [DbContext(typeof(EstoqueContext))]
-    [Migration("20230825173911_v700")]
-    partial class v700
+    [Migration("20230829201449_v2000")]
+    partial class v2000
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -196,9 +196,8 @@ namespace sysestoque_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("unidadeMedida")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<double>("precoUnit")
+                        .HasColumnType("double");
 
                     b.HasKey("id");
 

@@ -5,25 +5,25 @@
 namespace sysestoque_CyberKnight.Migrations
 {
     /// <inheritdoc />
-    public partial class v700 : Migration
+    public partial class v2000 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Numeracao",
-                table: "NotasEntrada",
-                type: "int",
+            migrationBuilder.AddColumn<double>(
+                name: "precoUnit",
+                table: "Produtos",
+                type: "double",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: 0.0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Numeracao",
-                table: "NotasEntrada");
+                name: "precoUnit",
+                table: "Produtos");
         }
     }
 }

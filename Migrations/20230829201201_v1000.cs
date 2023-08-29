@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace sysestoque_CyberKnight.Migrations
 {
     /// <inheritdoc />
-    public partial class v600 : Migration
+    public partial class v1000 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -103,7 +103,6 @@ namespace sysestoque_CyberKnight.Migrations
                     nome = table.Column<string>(type: "longtext", nullable: false),
                     descricao = table.Column<string>(type: "longtext", nullable: false),
                     estoque = table.Column<string>(type: "longtext", nullable: false),
-                    unidadeMedida = table.Column<string>(type: "longtext", nullable: false),
                     estoqueMax = table.Column<float>(type: "float", nullable: false),
                     estoqueMedio = table.Column<float>(type: "float", nullable: false),
                     CategoriaId = table.Column<int>(type: "int", nullable: false),
@@ -136,6 +135,7 @@ namespace sysestoque_CyberKnight.Migrations
                     DataEntrada = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ValorTotal = table.Column<float>(type: "float", nullable: false),
                     fornecedorCnpj = table.Column<string>(type: "varchar(255)", nullable: true),
+                    Numeracao = table.Column<int>(type: "int", nullable: false),
                     ResponsavelEntradalogin = table.Column<string>(type: "varchar(255)", nullable: true)
                 },
                 constraints: table =>

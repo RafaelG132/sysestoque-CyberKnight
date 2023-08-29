@@ -141,8 +141,7 @@ namespace sysestoque_CyberKnight
                 categoria.Nome = txtNome.Text;
                 categoria.Descricao = txtDescricao.Text;
 
-                if (EstaAtualizando)
-                {
+                if (EstaAtualizando){
 
                     categoria.Id = int.Parse(txtId.Text);
 
@@ -163,12 +162,9 @@ namespace sysestoque_CyberKnight
 
                     EstaAtualizando = false;
 
-                }
-                else
-                {
+                }else{
 
-                    using (var db = new EstoqueContext())
-                    {
+                    using (var db = new EstoqueContext()){
                         db.Categorias.Add(categoria);
                         db.SaveChanges();
 
@@ -194,16 +190,13 @@ namespace sysestoque_CyberKnight
 
 
             }
-            catch (Exception erro)
-            {
+            catch (Exception erro){
                 MessageBox.Show(erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-
-
             if (dgvCategoria.SelectedRows.Count > 0)
             {
                 categoria = (dgvCategoria.SelectedRows[0].DataBoundItem as Categoria);

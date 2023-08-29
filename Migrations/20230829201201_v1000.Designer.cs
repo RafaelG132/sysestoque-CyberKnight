@@ -11,8 +11,8 @@ using sysestoque_CyberKnight.Models;
 namespace sysestoque_CyberKnight.Migrations
 {
     [DbContext(typeof(EstoqueContext))]
-    [Migration("20230817204012_v600")]
-    partial class v600
+    [Migration("20230829201201_v1000")]
+    partial class v1000
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,6 +128,9 @@ namespace sysestoque_CyberKnight.Migrations
                     b.Property<DateTime>("DataEntrada")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("Numeracao")
+                        .HasColumnType("int");
+
                     b.Property<string>("ResponsavelEntradalogin")
                         .HasColumnType("varchar(255)");
 
@@ -190,10 +193,6 @@ namespace sysestoque_CyberKnight.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("unidadeMedida")
                         .IsRequired()
                         .HasColumnType("longtext");
 

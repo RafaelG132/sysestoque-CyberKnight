@@ -42,6 +42,7 @@
             txtResponsavel = new TextBox();
             label7 = new Label();
             txtRazaoSocial = new TextBox();
+            btnConsultarFornecedor = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvFornecedor).BeginInit();
             SuspendLayout();
             // 
@@ -239,12 +240,24 @@
             txtRazaoSocial.Size = new Size(323, 23);
             txtRazaoSocial.TabIndex = 31;
             // 
+            // btnConsultarFornecedor
+            // 
+            btnConsultarFornecedor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnConsultarFornecedor.Location = new Point(644, 43);
+            btnConsultarFornecedor.Name = "btnConsultarFornecedor";
+            btnConsultarFornecedor.Size = new Size(163, 23);
+            btnConsultarFornecedor.TabIndex = 34;
+            btnConsultarFornecedor.Text = "Consultar fornecedor";
+            btnConsultarFornecedor.UseVisualStyleBackColor = true;
+            btnConsultarFornecedor.Click += btnConsultarFornecedor_Click;
+            // 
             // FormFornecedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(817, 450);
+            Controls.Add(btnConsultarFornecedor);
             Controls.Add(label6);
             Controls.Add(txtResponsavel);
             Controls.Add(label7);
@@ -292,5 +305,6 @@
         private Label label7;
         private TextBox txtRazaoSocial;
         private ToolStripStatusLabel msgBarraStatus;
+        private Button btnConsultarFornecedor;
     }
 }

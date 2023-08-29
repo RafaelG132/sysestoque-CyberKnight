@@ -193,9 +193,8 @@ namespace sysestoque_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("unidadeMedida")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<double>("precoUnit")
+                        .HasColumnType("double");
 
                     b.HasKey("id");
 
