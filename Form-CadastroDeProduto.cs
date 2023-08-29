@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 namespace sysestoque_CyberKnight
 {
+
     public partial class Form_CadastroDeProduto : Form
     {
 
@@ -27,6 +28,7 @@ namespace sysestoque_CyberKnight
 
         public Form_CadastroDeProduto()
         {
+
 
 
             InitializeComponent();
@@ -87,21 +89,42 @@ namespace sysestoque_CyberKnight
         {
             this.Cursor = Cursors.WaitCursor;
 
+            produto.id = null;
+            produto.nome = txtnome.Text;
+            produto.estoque = txtqtd.Text;
+            produto.descricao = txtdescricao.Text;
+            produto.precoUnit = Convert.ToDouble(txtprecoUnit.Text);
+            produto.estoqueMax = float.Parse(txtestoquemax.Text);
+            produto.estoqueMedio = float.Parse(txtestoquemedio.Text);
+
+            produto.CategoriaId = (int)cbxProdCategoria.SelectedValue;
+            produto.UnidadeMedidaId = (int)cbxProdUnidMedida.SelectedValue;
+            //produto.estoqueMin = float.Parse(txtestoqueMin.Text);
             if (EstaAtualizando)
             {
+                produto.id = null;
+
+                using (var db = new EstoqueContext())
+                {
+                    db.Produtos.Update(produto);
+                    db.SaveChanges();
+
+                    produtos = db.Produtos.ToList();
+
+                    bindingSourceProdutos.DataSource = produtos;
+
+                    dgv_Produto.DataSource = bindingSourceProdutos;
+                    dgv_Produto.Refresh();
+
+                    this.Cursor = Cursors.Default;
+
+                }
+
+                EstaAtualizando = false;
 
             }
             else
             {
-                produto.id = null;
-                produto.CategoriaId = (int)cbxProdCategoria.SelectedValue;
-                produto.estoque = txtqtd.Text;
-                produto.descricao = txtdescricao.Text;
-                produto.precoUnit = Convert.ToDouble(txtprecoUnit.Text);
-                produto.estoqueMax = float.Parse(txtestoquemax.Text);
-                produto.estoqueMedio = float.Parse(txtestoquemedio.Text);
-                produto.unidadeMedida = cbxProdUnidMedida.SelectedText;
-                //produto.estoqueMin = float.Parse(txtestoqueMin.Text);
 
                 using (var db = new EstoqueContext())
                 {
@@ -116,6 +139,7 @@ namespace sysestoque_CyberKnight
                     dgv_Produto.Refresh();
 
                     this.Cursor = Cursors.Default;
+
                 }
             }
 
@@ -152,6 +176,11 @@ namespace sysestoque_CyberKnight
         }
 
         private void Form_CadastroDeProduto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

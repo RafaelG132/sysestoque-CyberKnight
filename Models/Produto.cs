@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 namespace sysestoque_CyberKnight.Models
 {
     public class Produto {
+
+
         [Key]
         public int? id { get; set; }
         public string nome { get; set; }
@@ -18,7 +20,6 @@ namespace sysestoque_CyberKnight.Models
 
         public double precoUnit { get; set; }
         
-        public string unidadeMedida { get; set; }
         public float estoqueMax { get; set; }
         public float estoqueMedio { get; set; }
         
@@ -30,9 +31,8 @@ namespace sysestoque_CyberKnight.Models
 
 
         [ForeignKey(nameof(UnidadeMedida))]
-        public int UnidadeMedidaId { get; set; }
+        public int? UnidadeMedidaId { get; set; }
         public UnidadeMedida? UnidadeMedida { get; set; }
-
 
         public ICollection<NotaEntrada>? NotasEntrada { get; set; } = new List<NotaEntrada>();
 
