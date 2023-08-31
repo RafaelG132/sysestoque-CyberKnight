@@ -60,8 +60,8 @@
             txtestoquemedio = new TextBox();
             txtestoquemax = new TextBox();
             menuStrip1 = new MenuStrip();
-            txtnome = new TextBox();
             lbl_nome = new Label();
+            txtnome = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgv_Produto).BeginInit();
             SuspendLayout();
             // 
@@ -337,24 +337,23 @@
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
-            // txtnome
-            // 
-            txtnome.Location = new Point(302, 166);
-            txtnome.Name = "txtnome";
-            txtnome.Size = new Size(100, 23);
-            txtnome.TabIndex = 27;
-            // 
             // lbl_nome
             // 
             lbl_nome.AutoSize = true;
             lbl_nome.BackColor = Color.Transparent;
             lbl_nome.ForeColor = SystemColors.ControlLightLight;
-            lbl_nome.Location = new Point(253, 169);
+            lbl_nome.Location = new Point(264, 166);
             lbl_nome.Name = "lbl_nome";
             lbl_nome.Size = new Size(43, 15);
-            lbl_nome.TabIndex = 30;
+            lbl_nome.TabIndex = 32;
             lbl_nome.Text = "Nome:";
-            lbl_nome.Click += label5_Click;
+            // 
+            // txtnome
+            // 
+            txtnome.Location = new Point(313, 163);
+            txtnome.Name = "txtnome";
+            txtnome.Size = new Size(100, 23);
+            txtnome.TabIndex = 31;
             // 
             // Form_CadastroDeProduto
             // 
@@ -431,7 +430,7 @@
         private DataGridViewTextBoxColumn estoquemax;
         private DataGridViewTextBoxColumn estoquemedio;
         private DataGridViewTextBoxColumn UnidadeMedida;
-        private TextBox txtnome;
         private Label lbl_nome;
+        private TextBox txtnome;
     }
 }
